@@ -1,0 +1,27 @@
+# Копируем bashrc zshrc
+wget -qNP ~ https://rawgit.com/yarem4uk/dotfiles/master/.zshrc 
+wget -qNP ~ https://rawgit.com/yarem4uk/dotfiles/master/.bashrc
+
+#Цветной nano
+yaourt -S nano-syntax-highlighting-git
+#Копируем nanorc в ~/
+cat /usr/share/nano-syntax-highlighting/nanorc.sample | xargs -0 echo >> 
+~/.nanorc
+#Переменная пути к rawgit 
+export rawgit=https://github.com/yarem4uk/dotfiles/master
+##Настройка звука
+# cp alsa.conf /etc/modprobe.d
+##Openbox
+# sudo pacman -S nitrogen obmenu obconf archlinux-wallpaper openbox-themes lxappearance gmrun
+
+##Программы
+# sudo pacman -S traceroute dnsutils tcpdump net-tools nmap whois hdparm truecrypt  p7zip unrar gvfs polkit-gnome ntfs-3g flashplugin
+# sudo pacman -S skype vlc file-roller evince lxmusic gpicview
+# sudo pacman -S firefox firefox-i18n-ru google-chrome
+# sudo yaourt -S dropbox jdk
+# sudo yaourt -S dosfstools ntfsprogs
+# sudo yaourt -S sublime-text
+# sudo yaourt -S transmission-gtk shutter
+# sudo yaourt -S teamviewer
+
+
