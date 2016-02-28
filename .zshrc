@@ -30,7 +30,7 @@ setopt interactive_comments
 WORDCHARS=''
 
 # editor
-export EDITOR="vim"
+export EDITOR="nano"
 export BROWSER="firefox"
 
 # grep colors
@@ -133,7 +133,7 @@ alias з="python"
 alias install='yaourt -S'
 
 
-
+alias ls='ls --color=auto'
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
