@@ -21,7 +21,7 @@ export PAGER='less'
 alias e='exit'
 alias h='history'
 
-alias cdd='cd ~/Dowloads/'
+alias cdd='cd ~/Downloads/'
 
 alias cd-='cd -'
 alias cd~='cd ~'
