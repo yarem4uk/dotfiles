@@ -30,7 +30,7 @@ setopt interactive_comments
 WORDCHARS=''
 
 # editor
-export EDITOR="nano"
+export EDITOR="vim"
 export BROWSER="firefox"
 
 # grep colors
@@ -76,7 +76,7 @@ zstyle ':completion:*' menu select
 # -----------------------------
 
 #Стиль emacs 
-bindkey -e
+bindkey -v
 
 #Клавиша delete 
 bindkey "\e[3~" delete-char
@@ -109,8 +109,8 @@ bindkey '^[[3;6~' kill-line
 # Aliases
 # -----------------------------
 
-alias e='exit'
-alias у='exit'
+alias q='exit'
+alias й='exit'
 alias h="history"
 alias р="history"
 alias ifc="ifconfig"
