@@ -26,6 +26,7 @@ Plugin 'moll/vim-node'
 
 
 Plugin 'tommcdo/vim-exchange'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
 call vundle#end()
