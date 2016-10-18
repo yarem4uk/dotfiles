@@ -7,6 +7,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 
+umask 022
+setopt autocd
+
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
@@ -24,11 +27,13 @@ export EDITOR='vim'
 export PAGER='less'
 
 ###Алиасы
+
 alias q='exit'
 alias й='exit'
 alias h='history'
 
-alias cdd='cd ~/Downloads/'
+alias cdd='cd ~/dotfiles/'
+alias cdl='cd ~/Downloads/'
 
 alias cdn='cd ~/geekbrains/node/'
 alias cdp='cd ~/hexlet/php/'
@@ -49,7 +54,7 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 
-alias ping='ping -c3 ya.ru'
+
 alias p='python'
 alias subl='subl3'
 alias ss='sudo subl3'
@@ -58,8 +63,6 @@ alias t='touch'
 alias x='chmod +x'
 alias n='node'
 alias tm='tmux'
-
-
 
 
 alias ls='ls --color=auto --group-directories-first'
@@ -80,6 +83,8 @@ alias stop='sudo systemctl stop httpd.service'
 ## Node
 alias npm='sudo npm'
 
+## Git
+alias gs='git status'
 
 alias -g W='|wc -w'
 alias -g G='|grep -w --color'
