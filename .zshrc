@@ -55,7 +55,9 @@ alias ..5="cd ../../../../.."
 
 
 
+alias df='df -h'
 alias p='python'
+alias ping='ping -c1 ya.ru'
 alias subl='subl3'
 alias ss='sudo subl3'
 alias sz='subl3 .zshrc'

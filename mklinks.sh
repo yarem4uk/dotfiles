@@ -1,3 +1,4 @@
+#!/bin/sh
 dir=~/dotfiles
 files=".zshrc .vimrc .tmux.conf"
 
