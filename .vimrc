@@ -107,6 +107,11 @@ vmap <leader>y :w! ~/.vbuf<CR>
 nmap <leader>y :.w! ~/.vbuf<CR>
 nmap <leader>p :r ~/.vbuf<CR>
 
+" Allows you to tintersudo pass and save the file 
+" when you forgot to open your file with sudo 
+
+cmap w!! %!sudo tee > /dev/null %
+
 inoremap <UP>    <NOP>
 inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
