@@ -65,6 +65,7 @@ alias t='touch'
 alias x='chmod +x'
 alias n='node'
 alias tm='tmux'
+alias th='~/dotfiles/tmux-s'
 
 
 alias ls='ls --color=auto --group-directories-first'
