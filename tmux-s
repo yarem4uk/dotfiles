@@ -5,7 +5,7 @@ session_name="hexlet"
 #tmux new-session -s ${session_name} -n ${first_window_name} -c ~/hexlet; split-window -h; -t ${session_name};
 # -d says not to attach to the session yet. top runs in the first
 # window
-tmux new-session -d -s ${session_name} -n ${first_window_name} -c ~/ vim
+tmux new-session -d -s ${session_name} -n ${first_window_name} -c ~/hexlet/php/oop/extends vim
 
 tmux new-window -d -n ${second_window_name} -c ~/ -t ${session_name}
 # In the most recently created session, split the (only) window
