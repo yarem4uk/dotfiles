@@ -146,3 +146,9 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 
 noremap 2o o<CR>
 noremap 2O O<Esc>O
+
+" Toggle paste modle
+
+nmap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
+imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
+
