@@ -70,6 +70,10 @@ colorscheme jellybeans
 
 let mapleader=","
 
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+
 noremap Y y$
 
 " upper/lower word
