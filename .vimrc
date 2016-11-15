@@ -154,5 +154,6 @@ nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
 imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 noremap <leader>' viwS'
-noremap p i(
-noremap b /return<cr>
+:onoremap p i(
+:onoremap b /return<cr>
+:onoremap in( :<c-u>normal! f(vi(<cr>
