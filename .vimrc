@@ -64,8 +64,6 @@ set smartcase
 set laststatus=2
 " let g:airline_theme='solarized' 
 
-" set background=dark
-" colorscheme material-theme
 colorscheme jellybeans
 
 let mapleader=","
@@ -99,8 +97,6 @@ nmap <C-\> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$']
-" set g:tagbar_ctags_bin
-nmap <F8> :TagbarToggle<CR>
 
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
@@ -144,9 +140,10 @@ noremap <silent> K gt
 
 " Join lines by <Leader>+j because I use J to go to the previous tab.
 
-noremap <Leader>j J
+noremap <leader>j J
 
-nmap <leader>v :tabedit $MYVIMRC<CR>
+" nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>v :vsplit $MYVIMRC<CR>
 
 noremap 2o o<CR>
 noremap 2O O<Esc>O
@@ -156,3 +153,6 @@ noremap 2O O<Esc>O
 nmap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
 imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
+noremap <leader>' viwS'
+noremap p i(
+noremap b /return<cr>
