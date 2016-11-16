@@ -64,7 +64,7 @@ alias sz='subl3 .zshrc'
 alias t='touch'
 alias x='chmod +x'
 alias n='node'
-alias tm='tmux'
+alias tm='tmux -2'
 alias th='~/dotfiles/tmux-s'
 
 
@@ -144,7 +144,7 @@ zle -N insert-double-roundbrackets
 bindkey '(' insert-double-roundbrackets
 
 
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 autoload -U colors && colors
 
 setopt prompt_subst
