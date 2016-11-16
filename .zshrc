@@ -64,7 +64,7 @@ alias sz='subl3 .zshrc'
 alias t='touch'
 alias x='chmod +x'
 alias n='node'
-alias tm='tmux -2'
+alias tm='tmux'
 alias th='~/dotfiles/tmux-s'
 
 
