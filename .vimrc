@@ -61,8 +61,8 @@ set t_Co=256
 set ignorecase
 set smartcase
 
+
 set laststatus=2
-" let g:airline_theme='solarized' 
 
 colorscheme jellybeans
 
@@ -75,26 +75,26 @@ let g:jellybeans_overrides = {
 noremap Y y$
 
 " upper/lower word
-nmap <leader>u mQviwU'Q
-nmap <leader>l mQviwu'Q
+noremap <leader>u mQviwU'Q
+noremap <leader>l mQviwu'Q
 
 " nmap <leader>w :w<CR>
-nmap <C-s> :w<CR>
-imap <C-s> <esc>:w<CR>
-nmap <leader>q :q<CR>
-nmap <silent> Q :q!<CR>
+noremap <C-s> :w<CR>
+inoremap <C-s> <esc>:w<CR>
+noremap <leader>q :q<CR>
+noremap <silent> Q :q!<CR>
 
 " Map ctrl-movement keys to window switching
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+noremap <C-k> <C-w><Up>
+noremap <C-j> <C-w><Down>
+noremap <C-l> <C-w><Right>
+noremap <C-h> <C-w><Left>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree /home/alex/hexlet/php/oop
 
-nmap <C-\> :NERDTreeFind<CR>
-nmap <silent> <leader><leader> :NERDTreeToggle<CR>
+noremap <C-\> :NERDTreeFind<CR>
+noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -103,26 +103,28 @@ let g:bufExplorerShowRelativePath=1
 
 nnoremap <leader>b :BufExplorer<CR>
 
-vmap <leader>y :w! ~/.vbuf<CR>
-nmap <leader>y :.w! ~/.vbuf<CR>
-nmap <leader>p :r ~/.vbuf<CR>
+vnoremap <leader>y :w! ~/.vbuf<CR>
+noremap <leader>y :.w! ~/.vbuf<CR>
+noremap <leader>p :r ~/.vbuf<CR>
 
 " Allows you to tintersudo pass and save the file 
 " when you forgot to open your file with sudo 
+cnoremap w!! %!sudo tee > /dev/null %
 
-cmap w!! %!sudo tee > /dev/null %
-
+" inoremap <esc>    <NOP>
 inoremap <UP>    <NOP>
 inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
+inoremap <bs>    <NOP>
 noremap <UP>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
+noremap <bs>    <NOP>
 
 " Make Ctrl-e jump to the end of the line in the insert mode.
-imap <C-e> <C-o>$
+inoremap <C-e> <C-o>$
 
 " Quickly select the text I just pasted.
 noremap gV `[v`]
@@ -139,20 +141,23 @@ noremap <silent> J gT
 noremap <silent> K gt
 
 " Join lines by <Leader>+j because I use J to go to the previous tab.
-
 noremap <leader>j J
 
 " nmap <leader>v :tabedit $MYVIMRC<CR>
-nmap <leader>v :vsplit $MYVIMRC<CR>
+noremap <leader>v :vsplit $MYVIMRC<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
 
 noremap 2o o<CR>
 noremap 2O O<Esc>O
 
 " Toggle paste modle
+noremap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
+inoremap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
-nmap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
-imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
+onoremap p i(
+onoremap b /return<cr>
+onoremap in( :<c-u>normal! f(vi(<cr>
 
-:onoremap p i(
-:onoremap b /return<cr>
-:onoremap in( :<c-u>normal! f(vi(<cr>
+noremap <leader>H :vsplit<cr>
+
+nnoremap <leader>N :setlocal number!<cr>
