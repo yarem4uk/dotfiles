@@ -1,6 +1,11 @@
 ###Алиасы
 
+alias reload='source ~/.zshrc'
+
+alias rmf='rm -rf'
+
 alias q='exit'
+alias Q='exit'
 alias й='exit'
 alias h='history'
 
@@ -60,6 +65,9 @@ alias npm='sudo npm'
 
 ## Git
 alias gs='git status'
+alias ga='git add .'
+alias gp='git push'
+alias gl='git pull'
 
 alias -g W='|wc -w'
 alias -g G='|grep -w --color'
