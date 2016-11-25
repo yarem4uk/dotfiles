@@ -29,6 +29,9 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
+
+Plugin 'jpalardy/vim-slime'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -64,9 +67,9 @@ set smartcase
 
 set laststatus=2
 
-colorscheme jellybeans
-
 let mapleader=","
+
+colorscheme jellybeans
 
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
@@ -90,16 +93,27 @@ noremap <C-j> <C-w><Down>
 noremap <C-l> <C-w><Right>
 noremap <C-h> <C-w><Left>
 
+" NerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * NERDTree /home/alex/hexlet/php/oop
+let NERDTreeIgnore = ['\.pyc$']
 
 noremap <C-\> :NERDTreeFind<CR>
 noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 
-let NERDTreeIgnore = ['\.pyc$']
+" Ctrlp
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
 
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
+
+let g:slime_target = "tmux"
+" let g:slime_no_mappings = 1
+
+" xnoremap <leader>s <Plug>SlimeRegionSend
+" nnoremap <leader>s <Plug>SlimeMotionSend
+" nnoremap <leader>ss <Plug>SlimeLineSend
 
 nnoremap <leader>b :BufExplorer<CR>
 
