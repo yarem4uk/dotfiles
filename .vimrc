@@ -32,6 +32,8 @@ Plugin 'tpope/vim-git'
 
 Plugin 'jpalardy/vim-slime'
 
+Plugin 'chriskempson/base16-vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -69,11 +71,11 @@ set laststatus=2
 
 let mapleader=","
 
-colorscheme jellybeans
+" colorscheme jellybeans
 
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-\}
+" let g:jellybeans_overrides = {
+" \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+" \}
 
 noremap Y y$
 
@@ -175,3 +177,8 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 noremap <leader>H :vsplit<cr>
 
 nnoremap <leader>N :setlocal number!<cr>
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+    source ~/.vimrc_background
+endif

@@ -84,7 +84,10 @@ if [[ $EUID == 0 ]]; then
     PROMPT='%{$fg[red]%}%~#%{$reset_color%} '
 else
     PROMPT=' %{$fg[white]%}%~ 
- ✘%{$reset_color%} '
+ %{$fg[red]%}✘%{$reset_color%} '
 fi
 
 RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
