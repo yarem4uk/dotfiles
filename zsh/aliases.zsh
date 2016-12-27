@@ -24,12 +24,10 @@ alias cdh='cd /srv/http/'
 
 alias jj='cd -'
 alias gg='cd ~'
-alias hh="cd .."
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
-
 
 
 alias df='df -h'

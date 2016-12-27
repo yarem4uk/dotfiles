@@ -29,9 +29,6 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
-
-Plugin 'jpalardy/vim-slime'
-
 Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
@@ -66,13 +63,19 @@ set t_Co=256
 set ignorecase
 set smartcase
 
-
 set laststatus=2
+
+set foldmethod=indent
+set foldlevelstart=99
 
 let mapleader=","
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+    source ~/.vimrc_background
+endif
+"
 " colorscheme jellybeans
-
 " let g:jellybeans_overrides = {
 " \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 " \}
@@ -97,7 +100,7 @@ noremap <C-h> <C-w><Left>
 
 " NerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd vimenter * NERDTree /home/alex/hexlet/php/oop
+autocmd vimenter * NERDTree /home/alex/hexlet/php
 let NERDTreeIgnore = ['\.pyc$']
 
 noremap <C-\> :NERDTreeFind<CR>
@@ -110,9 +113,6 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
 
-let g:slime_target = "tmux"
-" let g:slime_no_mappings = 1
-
 " xnoremap <leader>s <Plug>SlimeRegionSend
 " nnoremap <leader>s <Plug>SlimeMotionSend
 " nnoremap <leader>ss <Plug>SlimeLineSend
@@ -123,9 +123,11 @@ vnoremap <leader>y :w! ~/.vbuf<CR>
 noremap <leader>y :.w! ~/.vbuf<CR>
 noremap <leader>p :r ~/.vbuf<CR>
 
+"Command mappings
 " Allows you to tintersudo pass and save the file 
 " when you forgot to open your file with sudo 
 cnoremap w!! %!sudo tee > /dev/null %
+cnoremap <C-a> <Home>
 
 " inoremap <esc>    <NOP>
 inoremap <UP>    <NOP>
@@ -138,6 +140,7 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 noremap <bs>    <NOP>
+noremap <q>     <NOP>
 
 " Make Ctrl-e jump to the end of the line in the insert mode.
 inoremap <C-e> <C-o>$
@@ -175,10 +178,7 @@ onoremap b /return<cr>
 onoremap in( :<c-u>normal! f(vi(<cr>
 
 noremap <leader>H :vsplit<cr>
+noremap <leader>o :only<cr>
+noremap <Space><Space> <C-^> 
 
 nnoremap <leader>N :setlocal number!<cr>
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-    source ~/.vimrc_background
-endif
