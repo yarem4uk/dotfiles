@@ -24,8 +24,7 @@ alias cdt='cd ~/hexlet/php/testing/'
 alias cdb='cd ~/Dropbox/'
 alias cdh='cd /srv/http/'
 
-alias jj='cd -'
-alias gg='cd ~'
+alias cd-='cd -'
 alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
