@@ -182,3 +182,5 @@ noremap <leader>o :only<cr>
 noremap <Space><Space> <C-^> 
 
 nnoremap <leader>N :setlocal number!<cr>
+
+au BufRead,BufNewFile *.phtml set ft=php

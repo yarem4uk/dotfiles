@@ -20,6 +20,7 @@ alias cdo='cd ~/hexlet/php/oop/'
 alias cda='cd ~/hexlet/php/algorithms/'
 alias cdi='cd ~/hexlet/php/in_out/'
 alias cdt='cd ~/hexlet/php/testing/'
+alias cdw='cd ~/hexlet/php/web/'
 
 alias cdb='cd ~/Dropbox/'
 alias cdh='cd /srv/http/'
