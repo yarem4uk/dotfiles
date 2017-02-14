@@ -14,6 +14,8 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
+setopt share_history
+setopt append_history
 
 ##Расширенный глобинг
 setopt extended_glob
@@ -57,6 +59,8 @@ gprompt(){
 }
 
 
+# bindkey '^n' complete-world
+#
 #Поиск по истории клавишами j и k в стиле vim 
 bindkey '^j'  history-beginning-search-backward
 bindkey '^k'  history-beginning-search-forward

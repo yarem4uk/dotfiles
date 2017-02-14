@@ -29,6 +29,8 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
+Plugin 'foosoft/vim-argwrap'
+
 Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
@@ -184,3 +186,5 @@ noremap <Space><Space> <C-^>
 nnoremap <leader>N :setlocal number!<cr>
 
 au BufRead,BufNewFile *.phtml set ft=php
+
+nnoremap <silent> <leader>a :ArgWrap<CR>
