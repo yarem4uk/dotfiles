@@ -144,6 +144,11 @@ noremap <Right> <NOP>
 noremap <bs>    <NOP>
 noremap <q>     <NOP>
 
+noremap k gk
+noremap gk k
+noremap j gj
+noremap gj j
+
 " Make Ctrl-e jump to the end of the line in the insert mode.
 inoremap <C-e> <C-o>$
 
