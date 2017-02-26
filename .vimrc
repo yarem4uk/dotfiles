@@ -1,3 +1,4 @@
+source ~/dotfiles/vim/abbreviations.vim
 set nocompatible
 filetype off
 
@@ -102,9 +103,12 @@ noremap <C-h> <C-w><Left>
 
 " NerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 autocmd vimenter * NERDTree /home/alex/hexlet/php
 let NERDTreeIgnore = ['\.pyc$']
-
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
 noremap <C-\> :NERDTreeFind<CR>
 noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 
