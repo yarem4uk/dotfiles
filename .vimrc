@@ -1,4 +1,5 @@
 source ~/dotfiles/vim/abbreviations.vim
+
 set nocompatible
 filetype off
 
@@ -11,7 +12,6 @@ Plugin 'tpope/vim-sensible'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-
 Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -19,20 +19,20 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chriskempson/base16-vim'
+Plugin 'foosoft/vim-argwrap'
+Plugin 'SirVer/ultisnips'
 
-
+" html
+Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
+
+" js
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 
-
-Plugin 'tommcdo/vim-exchange'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-
-Plugin 'foosoft/vim-argwrap'
-
-Plugin 'chriskempson/base16-vim'
+" php 
+Plugin '2072/PHP-Indenting-for-VIm'
 
 call vundle#end()
 filetype plugin indent on
@@ -54,6 +54,7 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers=['eslint']
 
 set expandtab
 set softtabstop=4
@@ -74,26 +75,50 @@ set foldlevelstart=99
 let mapleader=","
 
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
+    let base16colorspace=256
     source ~/.vimrc_background
 endif
-"
-" colorscheme jellybeans
-" let g:jellybeans_overrides = {
-" \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-" \}
 
-noremap Y y$
+" EMMET
 
-" upper/lower word
-noremap <leader>u mQviwU'Q
-noremap <leader>l mQviwu'Q
+" let g:user_emmet_next_key = '<C-n>'
+" let g:user_emmet_prev_key = '<C-b>'
 
-" nmap <leader>w :w<CR>
-noremap <C-s> :w<CR>
-inoremap <C-s> <esc>:w<CR>
-noremap <leader>q :q<CR>
-noremap <silent> Q :q!<CR>
+" imap <expr> <C-i> emmet#expandAbbrIntelligent("\<C-i>")
+
+" ULTISNIPS
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsExpandTrigger='<Tab>'
+" let g:UltiSnipsExpandTrigger='<C-i>'
+
+" NERDTREE
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+
+noremap <silent> <leader><leader> :NERDTreeToggle<CR>
+noremap <C-\> :NERDTreeFind<CR>
+" autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
+autocmd vimenter * NERDTree /home/alex/hexlet/js/game/
+
+" CTRLP
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
+
+let g:bufExplorerDisableDefaultKeyMapping=1
+let g:bufExplorerShowRelativePath=1
+nnoremap <leader>b :BufExplorer<CR>
+
+
+"COMMAND MAPPINGS
+
+noremap Y $
+
+noremap <Space><Space> <C-^> 
 
 " Map ctrl-movement keys to window switching
 noremap <C-k> <C-w><Up>
@@ -101,39 +126,19 @@ noremap <C-j> <C-w><Down>
 noremap <C-l> <C-w><Right>
 noremap <C-h> <C-w><Left>
 
-" NerdTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-autocmd vimenter * NERDTree /home/alex/hexlet/php
-let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-noremap <C-\> :NERDTreeFind<CR>
-noremap <silent> <leader><leader> :NERDTreeToggle<CR>
-
-" Ctrlp
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_working_path_mode = 'ra'
-
-let g:bufExplorerDisableDefaultKeyMapping=1
-let g:bufExplorerShowRelativePath=1
-
-" xnoremap <leader>s <Plug>SlimeRegionSend
-" nnoremap <leader>s <Plug>SlimeMotionSend
-" nnoremap <leader>ss <Plug>SlimeLineSend
-
-nnoremap <leader>b :BufExplorer<CR>
-
-vnoremap <leader>y :w! ~/.vbuf<CR>
-noremap <leader>y :.w! ~/.vbuf<CR>
-noremap <leader>p :r ~/.vbuf<CR>
-
-"Command mappings
 " Allows you to tintersudo pass and save the file 
 " when you forgot to open your file with sudo 
 cnoremap w!! %!sudo tee > /dev/null %
+
+cnoremap <UP>    <NOP>
+cnoremap <Down>  <NOP>
+cnoremap <Left>  <NOP>
+cnoremap <Right> <NOP>
+cnoremap <bs>    <NOP>
+
 cnoremap <C-a> <Home>
+cnoremap <C-p> <UP>
+cnoremap <C-n> <Down>
 
 " inoremap <esc>    <NOP>
 inoremap <UP>    <NOP>
@@ -141,6 +146,7 @@ inoremap <Down>  <NOP>
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>
 inoremap <bs>    <NOP>
+
 noremap <UP>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
@@ -153,47 +159,64 @@ noremap gk k
 noremap j gj
 noremap gj j
 
-" Make Ctrl-e jump to the end of the line in the insert mode.
-inoremap <C-e> <C-o>$
-
-" Quickly select the text I just pasted.
-noremap gV `[v`]
-
-" if has("autocmd")
-"     autocmd bufwritepost .vimrc source $MYVIMRC
-" endif
-
 nnoremap ' `
 nnoremap ` '
 
-" Jump to the previous/next tab.
-noremap <silent> J gT
-noremap <silent> K gt
-
-" Join lines by <Leader>+j because I use J to go to the previous tab.
-noremap <leader>j J
-
-" nmap <leader>v :tabedit $MYVIMRC<CR>
-noremap <leader>v :vsplit $MYVIMRC<CR>
-noremap <leader>sv :source $MYVIMRC<CR>
-
-noremap 2o o<CR>
-noremap 2O O<Esc>O
+" Quickly select the text I just pasted.
+noremap gV `[v`]
 
 " Toggle paste modle
 noremap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
 inoremap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
-onoremap p i(
-onoremap b /return<cr>
-onoremap in( :<c-u>normal! f(vi(<cr>
+" Make Ctrl-e jump to the end of the line in the insert mode.
+inoremap <C-e> <C-o>$
+
+
+" MOVEMENT
+
+onoremap <silent>in :<C-u>normal! f(vi(<cr>
+
+" LEADER MAPING
+
+" upper/lower word
+noremap <leader>u mQviwU'Q
+noremap <leader>l mQviwu'Q
+
+vnoremap <leader>y :w! ~/.vbuf<cr>
+noremap <leader>y :.w! ~/.vbuf<cr>
+noremap <leader>p :r ~/.vbuf<cr>
+
+inoremap <leader>w <esc>:w<CR>
+noremap <leader>w :w<CR>
+
+noremap <silent> <leader>q :q!<CR>
 
 noremap <leader>H :vsplit<cr>
 noremap <leader>o :only<cr>
-noremap <Space><Space> <C-^> 
+
+noremap <leader>ev :vsplit $MYVIMRC<CR>
+noremap <leader>sv :source $MYVIMRC<CR>
 
 nnoremap <leader>N :setlocal number!<cr>
-
-au BufRead,BufNewFile *.phtml set ft=php
-
 nnoremap <silent> <leader>a :ArgWrap<CR>
+
+nnoremap <leader>f :normal! gg=G``<CR>
+
+" AUTOCOMANDS
+au bufread,bufnewfile *.html setl sts=2 sw=2
+au BufRead,BufNewFile *.phtml setl ft=php sts=2 sw=2
+au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
+
+function! SetHTML()
+    if (&ft == 'php')
+        set ft=html
+    elseif (&ft == 'html')
+        set ft=php
+    endif
+endfunc
+
+" au bufread *.phtml call Try()
+" function! Try()
+"    :echom 'hellow'
+" endfunc

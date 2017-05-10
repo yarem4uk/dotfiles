@@ -1,27 +1,23 @@
-###Алиасы
+### Алиасы
 
 alias reload='source ~/.zshrc'
 
 alias rmf='rm -rf'
 
 alias q='exit'
+alias ,q='exit'
 alias Q='exit'
 alias й='exit'
+alias бй='exit'
 alias h='history'
 
 alias cdd='cd ~/dotfiles/'
 alias cdl='cd ~/Downloads/'
 
-alias cdn='cd ~/geekbrains/node/'
-alias cdp='cd ~/hexlet/php/'
-alias cds='cd ~/hexlet/php/sikp/'
-alias cdf='cd ~/hexlet/php/function/'
-alias cdo='cd ~/hexlet/php/oop/'
-alias cda='cd ~/hexlet/php/algorithms/'
-alias cdi='cd ~/hexlet/php/in_out/'
-alias cdt='cd ~/hexlet/php/testing/'
-alias cdw='cd ~/hexlet/php/www/'
-alias cdr='cd ~/hexlet/php/routing/'
+
+alias cdj='cd ~/hexlet/js/sequences/'
+alias cdg='cd ~/hexlet/js/game/'
+alias cdp='cd ~/hexlet/js/practice/'
 
 alias cdb='cd ~/Dropbox/'
 alias cdh='cd /srv/http/'
@@ -33,13 +29,12 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 
+alias imv='vim'
 alias df='df -h'
+alias sqlite='sqlite3'
 alias p='python'
 alias ping='ping -c1 ya.ru'
 alias phpu='phpunit'
-alias subl='subl3'
-alias ss='sudo subl3'
-alias sz='subl3 .zshrc'
 alias t='touch'
 alias x='chmod +x'
 alias n='node'
@@ -55,9 +50,9 @@ alias ld='ls -d .*'
 
 alias install='yaourt -Sy --noconfirm'
 alias pacman='sudo pacman'
-alias uninstall='pacman -Rns'
+alias uninstall='pacman -Rncs'
 
-##Apache
+## Apache
 alias start='sudo systemctl start httpd.service'
 alias restart='sudo systemctl restart httpd.service'
 alias stop='sudo systemctl stop httpd.service'
@@ -76,7 +71,6 @@ alias -g G='|grep -w --color'
 alias -g L='|less'
 alias -g H='|head'
 alias -g T='|tail'
-
 alias -g HL="--help"
 alias -g N='2>/dev/null'
 

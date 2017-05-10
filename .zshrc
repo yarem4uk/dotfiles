@@ -58,16 +58,9 @@ gprompt(){
     # echo $mes
 }
 
-
-# bindkey '^n' complete-world
-#
-#Поиск по истории клавишами j и k в стиле vim 
-bindkey '^j'  history-beginning-search-backward
-bindkey '^k'  history-beginning-search-forward
-#####################################################
-#Поиск по истории клавишами up down
-# bindkey "^[[A"  history-beginning-search-backward
-# bindkey "^[[B"  history-beginning-search-forward
+#Поиск по истории клавишами p и n в стиле vim 
+bindkey '^p'  history-beginning-search-backward
+bindkey '^n'  history-beginning-search-forward
 
 
 insert-double-roundbrackets() {
