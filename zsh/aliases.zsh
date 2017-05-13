@@ -4,12 +4,8 @@ alias reload='source ~/.zshrc'
 
 alias rmf='rm -rf'
 
-alias q='exit'
-alias ,q='exit'
-alias Q='exit'
-alias й='exit'
-alias бй='exit'
 alias h='history'
+alias e='exit'
 
 alias cdd='cd ~/dotfiles/'
 alias cdl='cd ~/Downloads/'
