@@ -59,6 +59,10 @@ alias npm='sudo npm'
 ## Git
 alias gs='git status'
 alias ga='git add .'
+alias gcl='git clone'
+alias gbr='git branch'
+alias gci='git commit'
+alias gco='git checkout'
 alias gp='git push'
 alias gl='git pull'
 
