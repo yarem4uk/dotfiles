@@ -13,6 +13,7 @@ alias cdl='cd ~/Downloads/'
 
 alias cdj='cd ~/hexlet/js/sequences/'
 alias cdg='cd ~/hexlet/js/game/'
+alias cdc='cd ~/hexlet/js/collections/'
 alias cdp='cd ~/hexlet/js/practice/'
 
 alias cdb='cd ~/Dropbox/'
