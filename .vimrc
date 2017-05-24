@@ -103,7 +103,7 @@ let NERDTreeMinimalUI = 1
 noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
-autocmd vimenter * NERDTree /home/alex/hexlet/js/collections/
+autocmd vimenter * NERDTree /home/alex/hexlet/js/prototypes/
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
