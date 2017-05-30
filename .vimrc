@@ -204,6 +204,7 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 nnoremap <leader>f :normal! gg=G``<CR>
 
 " AUTOCOMANDS
+au bufread,bufnewfile *.js setl sts=2 sw=2
 au bufread,bufnewfile *.html setl sts=2 sw=2
 au BufRead,BufNewFile *.phtml setl ft=php sts=2 sw=2
 au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
