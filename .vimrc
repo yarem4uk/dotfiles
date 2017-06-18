@@ -8,10 +8,13 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'christoomey/vim-system-copy'
+Plugin 'vim-scripts/ReplaceWithRegister'
+
 Plugin 'tpope/vim-sensible'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
+olugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -35,6 +38,7 @@ Plugin 'moll/vim-node'
 Plugin '2072/PHP-Indenting-for-VIm'
 
 call vundle#end()
+
 filetype plugin indent on
 
 set number
@@ -88,7 +92,7 @@ endif
 
 " ULTISNIPS
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger='<Tab>'
 " let g:UltiSnipsExpandTrigger='<C-i>'
 
@@ -103,7 +107,8 @@ let NERDTreeMinimalUI = 1
 noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
-autocmd vimenter * NERDTree /home/alex/hexlet/js/prototypes/
+" autocmd vimenter * NERDTree /home/alex/hexlet/js/prototypes/
+autocmd vimenter * NERDTree /home/alex/hexlet/js/errors/
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -116,7 +121,7 @@ nnoremap <leader>b :BufExplorer<CR>
 
 "COMMAND MAPPINGS
 
-noremap Y $
+noremap Y y$
 
 noremap <Space><Space> <C-^> 
 
@@ -137,6 +142,7 @@ cnoremap <Right> <NOP>
 cnoremap <bs>    <NOP>
 
 cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 cnoremap <C-p> <UP>
 cnoremap <C-n> <Down>
 
