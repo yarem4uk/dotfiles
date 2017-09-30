@@ -10,6 +10,8 @@ alias e='exit'
 alias cdd='cd ~/dotfiles/'
 alias cdl='cd ~/Downloads/'
 
+alias cdf='cd ~/hexlet/php/fraim/'
+alias cda='cd ~/app/'
 
 alias cdj='cd ~/hexlet/js/sequences/'
 alias cdg='cd ~/hexlet/js/game/'
@@ -17,6 +19,7 @@ alias cdc='cd ~/hexlet/js/collections/'
 alias cdp='cd ~/hexlet/js/practice/'
 alias cdt='cd ~/hexlet/js/prototypes/'
 alias cde='cd ~/hexlet/js/errors/'
+# alias cda='cd ~/hexlet/js/async/'
 
 alias cdb='cd ~/Dropbox/'
 alias cdh='cd /srv/http/'
@@ -28,11 +31,12 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 
+alias pdf='zathura'
 alias imv='vim'
 alias df='df -h'
 alias sqlite='sqlite3'
 alias p='python'
-alias ping='ping -c1 ya.ru'
+# alias ping='ping -c1 ya.ru'
 alias phpu='phpunit'
 alias t='touch'
 alias x='chmod +x'

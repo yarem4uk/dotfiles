@@ -108,7 +108,9 @@ noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
 " autocmd vimenter * NERDTree /home/alex/hexlet/js/prototypes/
-autocmd vimenter * NERDTree /home/alex/hexlet/js/errors/
+" autocmd vimenter * NERDTree /home/alex/hexlet/js/async/
+" autocmd vimenter * NERDTree /home/alex/hexlet/php/fraim/
+autocmd vimenter * NERDTree /home/alex/app/
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -209,8 +211,13 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 
 nnoremap <leader>f :normal! gg=G``<CR>
 
+nnoremap <leader>( :normal! a(<esc>f;i)<esc>
+nnoremap <leader><space> :sh<esc>
+
 " AUTOCOMANDS
+
 au bufread,bufnewfile *.js setl sts=2 sw=2
+au bufread,bufnewfile *.php setl sts=2 sw=2
 au bufread,bufnewfile *.html setl sts=2 sw=2
 au BufRead,BufNewFile *.phtml setl ft=php sts=2 sw=2
 au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
