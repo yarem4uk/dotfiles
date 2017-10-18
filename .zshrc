@@ -1,6 +1,6 @@
 # Created by newuser for 5.2
 
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit -i
 
 ###Настройка истории
 HISTFILE=~/.zsh_history
@@ -8,6 +8,7 @@ HISTSIZE=5000
 SAVEHIST=5000
 
 umask 022
+
 setopt autocd
 
 setopt HIST_IGNORE_ALL_DUPS
@@ -25,12 +26,18 @@ WORDCHARS=''@
 
 stty stop undef
 stty start undef
+
 export EDITOR='vim'
-export PAGER='less'
+export PAGER='vimpager'
 
-#Загрузка алиасов
-source ~/dotfiles/zsh/aliases.zsh
+# #Загрузка алиасов
 
+if [[ -f $HOME/.aliases ]]; then 
+    source $HOME/.aliases
+fi
+
+alias ls='ls --color=auto'
+#
 ##Цветной grep
 export GREP_COLOR='1;33'
 
@@ -39,14 +46,7 @@ _comp_options+=(globdots) # completion fot dotfiles
 zstyle ':completion:*' menu select
 
 #VIM стиль
-#####################################################
-#Стиль vi or emacs 
 bindkey -v
-#bindkey -e
-
-export KEYTIMEOUT=1
-#Недостающие команды vim
-bindkey -a u undo
 
 #Добавление правого PROMT с именем git brunch
 gprompt(){
@@ -78,7 +78,8 @@ autoload -U colors && colors
 setopt prompt_subst
 
 if [[ $EUID == 0 ]]; then
-    PROMPT='%{$fg[red]%}%~#%{$reset_color%} '
+    PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
+ %{$fg[white]%}->%{$reset_color%} '
 else
     PROMPT=' %{$fg[white]%}%~ 
  %{$fg[red]%}✘%{$reset_color%} '
@@ -89,7 +90,4 @@ RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fpath=(~/.zsh/completion $fpath)

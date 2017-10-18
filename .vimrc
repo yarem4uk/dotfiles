@@ -37,6 +37,8 @@ Plugin 'moll/vim-node'
 " php 
 Plugin '2072/PHP-Indenting-for-VIm'
 
+" yaml
+Plugin 'stephpy/vim-yaml'
 call vundle#end()
 
 filetype plugin indent on
