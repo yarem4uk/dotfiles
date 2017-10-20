@@ -53,7 +53,8 @@ bindkey -v
 gprompt(){
     mes="git duty"
     if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-        echo $mes;
+        echo %{$fg[red]%}$mes%{$reset_color%};
+        # echo $mes;
     fi
 }
 # gprompt(){
@@ -92,7 +93,8 @@ else
  %{$fg[red]%}✘%{$reset_color%} '
 fi
 
-RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
+RPROMPT='$(gprompt) '
+# RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
 
 # if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
 #     RPROMPT='%{$fg[red]%}$(gprompt)%{$reset_color%} '
