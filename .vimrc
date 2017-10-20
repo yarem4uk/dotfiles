@@ -110,9 +110,9 @@ noremap <silent> <leader><leader> :NERDTreeToggle<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
 " autocmd vimenter * NERDTree /home/alex/hexlet/js/prototypes/
-" autocmd vimenter * NERDTree /home/alex/hexlet/js/async/
+autocmd vimenter * NERDTree /home/alex/hexlet/js/async/
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/fraim/
-autocmd vimenter * NERDTree /home/alex/app/
+" autocmd vimenter * NERDTree /home/alex/app/
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
