@@ -41,7 +41,7 @@ alias ls='ls --color=auto'
 ##Цветной grep
 export GREP_COLOR='1;33'
 
-_comp_options+=(globdots) # completion fot dotfiles
+_comp_options+=(globdots) # completion for dotfiles
 
 zstyle ':completion:*' menu select
 
@@ -50,13 +50,25 @@ bindkey -v
 
 #Добавление правого PROMT с именем git brunch
 
+# gprompt(){
+#     mes="git duty"
+#     if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+#         echo %{$fg[red]%}"($mes)"%{$reset_color%};
+#         # echo $mes;
+#     fi
+# }
+
 gprompt(){
-    mes="git duty"
-    if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-        echo %{$fg[red]%}$mes%{$reset_color%};
-        # echo $mes;
+    mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
+    if [[ "$mes" != "" ]]; then 
+        if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+            echo %{$fg[red]%}"($mes)"%{$reset_color%}; 
+        else 
+            echo %{$fg[yellow]%}"($mes)"%{$reset_color%}; 
+        fi
     fi
 }
+
 # gprompt(){
 #     mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
 #     if [ "$mes" != "" ]; then 
@@ -93,7 +105,9 @@ else
  %{$fg[red]%}✘%{$reset_color%} '
 fi
 
-RPROMPT='$(gprompt) '
+RPROMPT=$(gprompt)
+# RPROMPT=$(gprompt) 
+
 # RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
 
 # if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
