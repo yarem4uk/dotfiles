@@ -49,14 +49,21 @@ zstyle ':completion:*' menu select
 bindkey -v
 
 #Добавление правого PROMT с именем git brunch
+
 gprompt(){
-    mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
-    if [ "$mes" != "" ]; then 
-        # echo "$mes"; 
-        echo "($mes)"; 
+    mes="git duty"
+    if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+        echo $mes;
     fi
-    # echo $mes
 }
+# gprompt(){
+#     mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
+#     if [ "$mes" != "" ]; then 
+#         # echo "$mes"; 
+#         echo "($mes)"; 
+#     fi
+#     # echo $mes
+# }
 
 #Поиск по истории клавишами p и n в стиле vim 
 bindkey '^p'  history-beginning-search-backward
@@ -85,11 +92,13 @@ else
  %{$fg[red]%}✘%{$reset_color%} '
 fi
 
-if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-    RPROMPT='%{$fg[red]%}$(gprompt)%{$reset_color%} '
-else 
-    RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
-fi
+RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
+
+# if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+#     RPROMPT='%{$fg[red]%}$(gprompt)%{$reset_color%} '
+# else 
+#     RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
+# fi
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
