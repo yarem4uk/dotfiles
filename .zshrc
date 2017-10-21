@@ -105,7 +105,7 @@ else
  %{$fg[red]%}✘%{$reset_color%} '
 fi
 
-RPROMPT=$(gprompt)
+export RPROMPT=$(gprompt)
 # RPROMPT=$(gprompt) 
 
 # RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
