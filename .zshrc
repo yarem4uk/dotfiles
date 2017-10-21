@@ -1,15 +1,15 @@
 # Created by newuser for 5.2
 
 autoload -Uz compinit && compinit -i
+umask 022
+setopt autocd
 
 ###Настройка истории
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 
-umask 022
 
-setopt autocd
 
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
@@ -17,6 +17,14 @@ setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 setopt share_history
 setopt append_history
+
+function h(){
+    if [[ -z "$1" ]]; then
+        history  0 | tail -n 30
+    else
+        history 0 | grep "$*"
+    fi
+}
 
 ##Расширенный глобинг
 setopt extended_glob
@@ -48,35 +56,35 @@ zstyle ':completion:*' menu select
 #VIM стиль
 bindkey -v
 
-#Добавление правого PROMT с именем git brunch
+#Добавление правого PROMT с именем git brunch and git status 
 
-# gprompt(){
-#     mes="git duty"
-#     if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-#         echo %{$fg[red]%}"($mes)"%{$reset_color%};
-#         # echo $mes;
-#     fi
-# }
-
-gprompt(){
+function gprompt() {
     mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
+    durty=`git diff --shortstat 2> /dev/null | tail -n1`
+    green=%{$fg[green]%}
+    red=%{$fg[red]%}
+    yellow=%{$fg[yellow]%}
+    reset=%{$reset_color%}
     if [[ "$mes" != "" ]]; then 
-        if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-            echo %{$fg[red]%}"($mes)"%{$reset_color%}; 
+        if [[ $durty != "" ]]; then
+            echo "$red ($mes) $reset"
         else 
-            echo %{$fg[yellow]%}"($mes)"%{$reset_color%}; 
+            echo "$yellow ($mes) $reset"
         fi
     fi
 }
 
-# gprompt(){
-#     mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
-#     if [ "$mes" != "" ]; then 
-#         # echo "$mes"; 
-#         echo "($mes)"; 
-#     fi
-#     # echo $mes
-# }
+RPROMPT='$(gprompt) '
+
+#PROMPT for user and root
+
+if [[ $EUID == 0 ]]; then
+    PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
+ %{$fg[white]%}->%{$reset_color%} '
+else
+    PROMPT=' %{$fg[white]%}%~ 
+ %{$fg[red]%}✘%{$reset_color%} '
+fi
 
 #Поиск по истории клавишами p и n в стиле vim 
 bindkey '^p'  history-beginning-search-backward
@@ -97,24 +105,6 @@ autoload -U colors && colors
 
 setopt prompt_subst
 
-if [[ $EUID == 0 ]]; then
-    PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
- %{$fg[white]%}->%{$reset_color%} '
-else
-    PROMPT=' %{$fg[white]%}%~ 
- %{$fg[red]%}✘%{$reset_color%} '
-fi
-
-export RPROMPT=$(gprompt)
-# RPROMPT=$(gprompt) 
-
-# RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
-
-# if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-#     RPROMPT='%{$fg[red]%}$(gprompt)%{$reset_color%} '
-# else 
-#     RPROMPT='%{$fg[yellow]%}$(gprompt)%{$reset_color%} '
-# fi
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

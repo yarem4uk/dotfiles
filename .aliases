@@ -4,7 +4,6 @@ alias reload='source ~/.zshrc'
 
 alias rmf='rm -rf'
 
-alias h='history'
 alias less='vimpager'
 alias zless='vimpager'
 
