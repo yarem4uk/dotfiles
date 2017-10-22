@@ -1,5 +1,5 @@
 #!/bin/sh
-dir=~/dotfiles/scripts
+dir=~/dotfiles
 files="zshrc aliases vimrc tmux.conf"
 
 cd $dir
@@ -11,3 +11,6 @@ do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+echo "Crating file .vbuf for vim."
+touch ~/.vbuf

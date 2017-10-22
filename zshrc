@@ -38,14 +38,13 @@ stty start undef
 export EDITOR='vim'
 export PAGER='vimpager'
 
-# #Загрузка алиасов
-
+##Загрузка алиасов
 if [[ -f $HOME/.aliases ]]; then 
     source $HOME/.aliases
 fi
 
 alias ls='ls --color=auto'
-#
+
 ##Цветной grep
 export GREP_COLOR='1;33'
 
