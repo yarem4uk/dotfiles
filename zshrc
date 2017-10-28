@@ -10,7 +10,6 @@ HISTSIZE=5000
 SAVEHIST=5000
 
 
-
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
@@ -109,3 +108,16 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 fpath=(~/.zsh/completion $fpath)
+
+# Hooks
+
+autoload -U add-zsh-hook
+
+function auto-ls-after-cd() {
+  emulate -L zsh
+  if [ "$ZSH_EVAL_CONTEXT" = "toplevel:shfunc" ]; then
+      ls --group-directories-first
+  fi
+}
+
+add-zsh-hook chpwd auto-ls-after-cd

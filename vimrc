@@ -117,6 +117,7 @@ autocmd vimenter * NERDTree /home/alex/hexlet/js/async/
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_by_filename = 1
 
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
@@ -218,6 +219,9 @@ nnoremap <leader><space> :sh<esc>
 
 " AUTOCOMANDS
 
+au bufread,bufnewfile sh setl sts=2 sw=2
+au bufread,bufnewfile zsh setl sts=2 sw=2
+au bufread,bufnewfile vim setl sts=2 sw=2
 au bufread,bufnewfile *.js setl sts=2 sw=2
 au bufread,bufnewfile *.php setl sts=2 sw=2
 au bufread,bufnewfile *.html setl sts=2 sw=2
