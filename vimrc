@@ -115,7 +115,7 @@ autocmd vimenter * NERDTree /home/alex/hexlet/js/async/
 " autocmd vimenter * NERDTree /home/alex/app/
 
 " CTRLP
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 1
 

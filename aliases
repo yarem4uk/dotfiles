@@ -10,7 +10,7 @@ alias zless='vimpager'
 if [[ $EUID -ne 0 ]]; then 
     # alias cd='cd && ls'
     alias cdd='cd ~/dotfiles/'
-    alias cdl='cd ~/Downloads/'
+    alias cdl='cd ~/downloads/'
     alias cdf='cd ~/hexlet/php/fraim/'
     alias cdj='cd ~/hexlet/js/sequences/'
     alias cdg='cd ~/hexlet/js/game/'
