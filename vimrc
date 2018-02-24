@@ -99,13 +99,13 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '.'
 highlight link ALEWarningSign Title
-" highlight link ALEErrorSign ALEErrorSign 
+highlight link ALEErrorSign night
 " highlight clear ALEWarningSign
 let g:ale_set_highlights = 0
 " let g:ale_sign_column_always = 1
 
-nnoremap <leader>j :ALENextWrap<CR>
-nnoremap <leader>k :ALEPreviousWrap<CR>
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
  
 
 " LIGHGLINE
@@ -164,6 +164,7 @@ nnoremap <leader>b :BufExplorer<CR>
 
 " FZF
 nnoremap <C-p> :Files<cr>
+nnoremap ; :Buffers<cr>
 
 " COMMAND MAPPINGS
 
