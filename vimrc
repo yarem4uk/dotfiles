@@ -29,7 +29,7 @@ Plugin 'junegunn/fzf.vim'
 " linter
 Plugin 'w0rp/ale'
 " Plugin 'scrooloose/syntastic'
- 
+
 " html
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
@@ -79,7 +79,8 @@ set laststatus=2
 set foldmethod=indent
 set foldlevelstart=99
 
-let mapleader=","
+" let mapleader=","
+let mapleader="\<Space>"
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -98,7 +99,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '.'
-highlight link ALEWarningSign Title
+highlight link ALEWarningSign todo
 highlight link ALEErrorSign night
 " highlight clear ALEWarningSign
 let g:ale_set_highlights = 0
@@ -106,7 +107,7 @@ let g:ale_set_highlights = 0
 
 nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
- 
+
 
 " LIGHGLINE
 let g:lightline = {
@@ -117,7 +118,7 @@ let g:lightline = {
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
- 
+
 " let g:syntastic_always_populate_loc_list = 0
 " let g:syntastic_auto_loc_list = 0
 " let g:syntastic_check_on_open = 0
@@ -126,7 +127,7 @@ let g:lightline = {
 
 " let g:airline_section_z = ''
 " let g:airline_section_y = ''
- 
+
 " ULTISNIPS
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
@@ -137,13 +138,15 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 " NERDTREE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules$']
+" let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 " let NERDTreeShowBookmarks=1
 
-noremap <silent> <leader><leader> :NERDTreeToggle<CR>
+" noremap <silent> <leader><leader> :NERDTreeToggle /home/alex/hexlet/js/<CR>
+noremap <silent> ,, :NERDTreeToggle /home/alex/hexlet/js/<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
 " autocmd vimenter * NERDTree /home/alex/hexlet/js/
@@ -164,13 +167,13 @@ nnoremap <leader>b :BufExplorer<CR>
 
 " FZF
 nnoremap <C-p> :Files<cr>
-nnoremap ; :Buffers<cr>
+nnoremap <leader>; :Buffers<cr>
 
 " COMMAND MAPPINGS
 
 noremap Y y$
 
-noremap <Space><Space> <C-^> 
+noremap <leader><leader> <C-^> 
 
 " Map ctrl-movement keys to window switching
 noremap <C-k> <C-w><Up>
@@ -258,7 +261,7 @@ nnoremap <leader>f :normal! gg=G``<CR>
 nnoremap <leader>( :normal! a(<esc>f;i)<esc>
 " nnoremap <leader><space> :sh<esc>
 nnoremap <leader>e <C-z>
-nnoremap <Leader>F :CtrlPFunky<Cr>
+" nnoremap <Leader>F :CtrlPFunky<Cr>
 "
 " AUTOCOMANDS
 " au bufread,bufnewfile,BufLeave *.php set dictionary+=~/.vim/dic/php_list
