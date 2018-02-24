@@ -5,8 +5,13 @@ iabbrev spdo \PDO
 iabbrev cosnt const
 iabbrev funciton function
 iabbrev retrun return
-iabbrev phpe PHP_EOL
-iabbrev drs DIRECTORY_SEPARATOR
+iabbrev el PHP_EOL
+iabbrev ds DIRECTORY_SEPARATOR
+" iabbrev php <?php
+
+" iabbrev eq ===
+" iabbrev ne !=
+iabbrev jj =>
 
 iabbrev ias import assert from 'assert';
 

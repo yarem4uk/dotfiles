@@ -83,7 +83,7 @@ else
     PROMPT=' %{$fg[white]%}%~ 
  %{$fg[red]%}✘%{$reset_color%} '
 fi
-
+#✗
 #Поиск по истории клавишами p и n в стиле vim 
 bindkey '^p'  history-beginning-search-backward
 bindkey '^n'  history-beginning-search-forward
@@ -121,3 +121,14 @@ function auto-ls-after-cd() {
 }
 
 add-zsh-hook chpwd auto-ls-after-cd
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function fzf-bookmarks-widget() {
+  cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac | awk '{print $1}')
+  # zle reset-prompt
+}
+
+
+zle -N fzf-bookmarks-widget
+bindkey '^f' fzf-bookmarks-widget

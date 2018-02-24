@@ -8,18 +8,13 @@ alias less='vimpager'
 alias zless='vimpager'
 
 if [[ $EUID -ne 0 ]]; then 
-    # alias cd='cd && ls'
-    alias cdd='cd ~/dotfiles/'
-    alias cdl='cd ~/downloads/'
-    alias cdf='cd ~/hexlet/php/fraim/'
-    alias cdj='cd ~/hexlet/js/sequences/'
-    alias cdg='cd ~/hexlet/js/game/'
-    alias cdc='cd ~/hexlet/js/collections/'
-    alias cdp='cd ~/hexlet/js/practice/'
-    alias cdt='cd ~/hexlet/js/prototypes/'
-    alias cde='cd ~/hexlet/js/errors/'
+# alias cd='cd && ls'
+  alias cdd='cd ~/dotfiles/'
+  alias cdl='cd ~/downloads/'
+  alias cdu='cd ~/unit/web/'
 # alias cda='cd ~/hexlet/js/async/'
-    alias config='cd ~/.config'
+  alias config='cd ~/.config'
+  alias shop='cd ~/laravel/shop'
 fi
 
 alias cd-='cd -'
@@ -29,6 +24,7 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 
+alias n='babel-node'
 alias pdf='zathura'
 alias ivm='vim'
 alias df='df -h'
@@ -36,6 +32,7 @@ alias sqlite='sqlite3'
 alias ping='ping -c1 google.com'
 alias phpu='phpunit'
 alias x='chmod +x'
+alias f='fzf'
 
 alias grep='grep -w --color'
 
@@ -48,6 +45,9 @@ alias uninstall='pacman -Rncs'
 alias install='yaourt -Sy --noconfirm'
 alias pacman='sudo pacman'
 alias npm='sudo npm'
+
+# Laravel/Lumen
+# alias artisan='php artisan'
 
 ## Docker
 alias start='systemctl start docker.service'
