@@ -1,0 +1,94 @@
+# nodejs
+snippet im "import" b
+import ${1:name} from '${2:$1}';
+$0
+endsnippet
+
+snippet imas "import" b
+import * as ${1:name} from '${2:$1}';
+$0
+endsnippet
+
+snippet import "import" b
+import { ${1:name} } from './${2:$1}';
+$0
+endsnippet
+
+
+snippet cl "console.log" 
+console.log(${1:`!p
+snip.rv = snip.v.text.strip().strip(";")
+`});
+endsnippet
+
+# conditions
+snippet if
+if ($1) {
+  ${2:${VISUAL:statemant}}
+}
+endsnippet 
+
+snippet else 
+else {
+  $1
+}
+endsnippet
+
+snippet ter
+${1:condition} ? ${2:true} : ${3:false}
+endsnippet
+
+snippet switch 
+switch (${1:state}) {
+  case $2:
+    $3
+}
+endsnippet
+
+snippet fn
+const ${1:name} = (${2:args}) => {
+  ${3:statemant}
+};
+endsnippet
+
+snippet f
+($2) => {
+  $3
+};
+endsnippet
+
+snippet sf
+${1:arg} => ${2:$1}
+endsnippet
+
+snippet iter 
+const ${1:iter} = (${2:item}, ${3:acc}) => {
+  if ($6) {
+    return ${7:$3};
+  }
+  return iter(${4:$2}, ${5:$3});
+};
+endsnippet
+
+snippet head
+const [${1:head}, ...${2:rest}] = ${0:arr};
+endsnippet
+
+# OPP
+
+snippet calls
+class ${1:NameOfClass} {
+  $2
+}
+endsnippet
+
+snippet m 
+${1:nameOfMethod}($2) {
+  $3
+}
+endsnippet
+
+snippet lodash
+import _ from 'lodash';
+$0
+endsnippet
