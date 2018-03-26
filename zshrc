@@ -18,11 +18,11 @@ setopt share_history
 setopt append_history
 
 function h(){
-    if [[ -z "$1" ]]; then
-        history  0 | tail -n 30
-    else
-        history 0 | grep "$*"
-    fi
+  if [[ -z "$1" ]]; then
+    history  0 | tail -n 30
+  else
+    history 0 | grep "$*"
+  fi
 }
 
 ##Расширенный глобинг
@@ -39,7 +39,7 @@ export PAGER='vimpager'
 
 ##Загрузка алиасов
 if [[ -f $HOME/.aliases ]]; then 
-    source $HOME/.aliases
+  source $HOME/.aliases
 fi
 
 alias ls='ls --color=auto'
@@ -57,19 +57,19 @@ bindkey -v
 #Добавление правого PROMT с именем git brunch and git status 
 
 function gprompt() {
-    mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
-    durty=`git diff --shortstat 2> /dev/null | tail -n1`
-    green=%{$fg[green]%}
-    red=%{$fg[red]%}
-    yellow=%{$fg[yellow]%}
-    reset=%{$reset_color%}
-    if [[ "$mes" != "" ]]; then 
-        if [[ $durty != "" ]]; then
-            echo "$red ($mes) $reset"
-        else 
-            echo "$yellow ($mes) $reset"
-        fi
+  mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
+  durty=`git diff --shortstat 2> /dev/null | tail -n1`
+  green=%{$fg[green]%}
+  red=%{$fg[red]%}
+  yellow=%{$fg[yellow]%}
+  reset=%{$reset_color%}
+  if [[ "$mes" != "" ]]; then 
+    if [[ $durty != "" ]]; then
+      echo "$red ($mes) $reset"
+    else 
+      echo "$yellow ($mes) $reset"
     fi
+  fi
 }
 
 RPROMPT='$(gprompt) '
@@ -77,11 +77,11 @@ RPROMPT='$(gprompt) '
 #PROMPT for user and root
 
 if [[ $EUID == 0 ]]; then
-    PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
- %{$fg[white]%}->%{$reset_color%} '
+  PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
+  %{$fg[white]%}->%{$reset_color%} '
 else
-    PROMPT=' %{$fg[white]%}%~ 
- %{$fg[red]%}✘%{$reset_color%} '
+  PROMPT=' %{$fg[white]%}%~ 
+  %{$fg[red]%}✘%{$reset_color%} '
 fi
 #✗
 #Поиск по истории клавишами p и n в стиле vim 
@@ -90,8 +90,8 @@ bindkey '^n'  history-beginning-search-forward
 
 
 insert-double-roundbrackets() {
-    LBUFFER="${LBUFFER}("
-    RBUFFER=")${RBUFFER}"
+LBUFFER="${LBUFFER}("
+RBUFFER=")${RBUFFER}"
 }
 
 zle -N insert-double-roundbrackets
@@ -116,7 +116,8 @@ autoload -U add-zsh-hook
 function auto-ls-after-cd() {
   emulate -L zsh
   if [ "$ZSH_EVAL_CONTEXT" = "toplevel:shfunc" ]; then
-      ls --group-directories-first
+    ls
+    # ls --group-directories-first
   fi
 }
 
@@ -126,9 +127,17 @@ add-zsh-hook chpwd auto-ls-after-cd
 
 function fzf-bookmarks-widget() {
   cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac | awk '{print $1}')
-  # zle reset-prompt
+  zle reset-prompt
 }
 
 
 zle -N fzf-bookmarks-widget
-bindkey '^f' fzf-bookmarks-widget
+bindkey '^o' fzf-bookmarks-widget
+
+function fzf-history-widget() {
+  LBUFFER=$(fc -lnr 1 | fzf --tiebreak=begin)
+  zle redisplay
+}
+
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget

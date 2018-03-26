@@ -17,8 +17,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'bling/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'itchyny/lightline.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'foosoft/vim-argwrap'
@@ -26,9 +24,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
+" Git
+Plugin 'tpope/vim-fugitive'
+
 " linter
 Plugin 'w0rp/ale'
-" Plugin 'scrooloose/syntastic'
 
 " html
 Plugin 'othree/html5.vim'
@@ -61,6 +61,7 @@ set wrap
 set linebreak
 set cursorline
 set showcmd
+set showmatch
 set noshowmode
 
 set expandtab
@@ -110,21 +111,29 @@ nnoremap [r :ALEPreviousWrap<CR>
 
 
 " LIGHGLINE
+
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'seoul256',
       \ }
 
+" let g:lightline = {
+"       \ 'colorscheme': 'seoul256',
+"        \ 'active': {
+"        \   'left': [ [ 'mode', 'paste' ],
+"        \             ['gitbranch', 'readonly', 'filename', 'modified' ] ],
+"        \  'right': [ [ 'lineinfo' ],
+"        \            [ '' ],
+"        \            [ 'filetype' ] ] 
+"       \ },
+"       \    'component_function': {
+"       \   'gitbranch': 'fugitive#head'
+"       \ },
+"       \ }
+
+" let g:lightline.separator = { 'left': '', 'right': '' }
+" let g:lightline.subseparator = { 'left': '|', 'right': '|' }
+
 " STATUSLINE
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 1
-" let g:syntastic_javascript_checkers=['eslint']
-
 " let g:airline_section_z = ''
 " let g:airline_section_y = ''
 
@@ -145,20 +154,13 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 " let NERDTreeShowBookmarks=1
 
-" noremap <silent> <leader><leader> :NERDTreeToggle /home/alex/hexlet/js/<CR>
 noremap <silent> ,, :NERDTreeToggle /home/alex/hexlet/js/<CR>
 noremap <C-\> :NERDTreeFind<CR>
-" autocmd vimenter * NERDTree /home/alex/hexlet/php/cookies/
-" autocmd vimenter * NERDTree /home/alex/hexlet/js/
-" autocmd vimenter * NERDTree /home/alex/unit/web/
-" autocmd vimenter * NERDTree /home/alex/laravel/
-" autocmd vimenter * NERDTree /home/alex/hexlet/php/fraim/
 " autocmd vimenter * NERDTree /home/alex/app/
 
 " BUFEXPLORER
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
-nnoremap <leader>b :BufExplorer<CR>
 
 " EMMET
 " let g:user_emmet_next_key = '<C-n>'
@@ -180,6 +182,7 @@ noremap <C-k> <C-w><Up>
 noremap <C-j> <C-w><Down>
 noremap <C-l> <C-w><Right>
 noremap <C-h> <C-w><Left>
+
 " Allows you to tintersudo pass and save the file 
 " when you forgot to open your file with sudo 
 cnoremap w!! %!sudo tee > /dev/null %
@@ -229,7 +232,6 @@ inoremap <C-e> <C-o>$
 inoremap <C-f> <C-x><C-f>
 
 " MOVEMENT
-
 onoremap <silent>in :<C-u>normal! f(vi(<cr>
 
 " LEADER MAPING
@@ -242,12 +244,10 @@ vnoremap <leader>y :w! ~/.vbuf<cr>
 noremap <leader>y :.w! ~/.vbuf<cr>
 noremap <leader>p :r ~/.vbuf<cr>
 
-inoremap <leader>w <esc>:w<CR>
-noremap <leader>w :w<CR>
+inoremap ,w <esc>:w<CR>
+noremap ,w :w<CR>
 
 noremap <silent> <leader>q :q!<CR>
-
-noremap <leader>H :vsplit<cr>
 noremap <silent> <leader>o :only<cr>
 
 noremap <leader>v :vsplit $MYVIMRC<CR>
@@ -261,7 +261,6 @@ nnoremap <leader>f :normal! gg=G``<CR>
 nnoremap <leader>( :normal! a(<esc>f;i)<esc>
 " nnoremap <leader><space> :sh<esc>
 nnoremap <leader>e <C-z>
-" nnoremap <Leader>F :CtrlPFunky<Cr>
 "
 " AUTOCOMANDS
 " au bufread,bufnewfile,BufLeave *.php set dictionary+=~/.vim/dic/php_list
@@ -296,5 +295,5 @@ endfunc
 " endfunc
 "
 "symbols
-"✗✘
+"✗✘✓
 
