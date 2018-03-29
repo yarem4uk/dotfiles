@@ -54,8 +54,9 @@ zstyle ':completion:*' menu select
 #VIM стиль
 bindkey -v
 
-#Добавление правого PROMT с именем git brunch and git status 
+export KEYTIMEOUT=1
 
+#Добавление правого PROMT с именем git brunch and git status 
 function gprompt() {
   mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
   durty=`git diff --shortstat 2> /dev/null | tail -n1`
@@ -83,20 +84,11 @@ else
   PROMPT=' %{$fg[white]%}%~ 
   %{$fg[red]%}✘%{$reset_color%} '
 fi
+
 #✗
 #Поиск по истории клавишами p и n в стиле vim 
 bindkey '^p'  history-beginning-search-backward
 bindkey '^n'  history-beginning-search-forward
-
-
-insert-double-roundbrackets() {
-LBUFFER="${LBUFFER}("
-RBUFFER=")${RBUFFER}"
-}
-
-zle -N insert-double-roundbrackets
-bindkey '(' insert-double-roundbrackets
-
 
 # export TERM='xterm-256color'
 autoload -U colors && colors
@@ -117,7 +109,6 @@ function auto-ls-after-cd() {
   emulate -L zsh
   if [ "$ZSH_EVAL_CONTEXT" = "toplevel:shfunc" ]; then
     ls
-    # ls --group-directories-first
   fi
 }
 
@@ -125,19 +116,29 @@ add-zsh-hook chpwd auto-ls-after-cd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
+
 function fzf-bookmarks-widget() {
-  cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac | awk '{print $1}')
+  cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac --height 10%| awk '{print $1}')
   zle reset-prompt
+  # zle redisplay
 }
-
-
-zle -N fzf-bookmarks-widget
-bindkey '^o' fzf-bookmarks-widget
 
 function fzf-history-widget() {
   LBUFFER=$(fc -lnr 1 | fzf --tiebreak=begin)
   zle redisplay
 }
 
+function insert-double-roundbrackets() {
+  LBUFFER="${LBUFFER}("
+  RBUFFER=")${RBUFFER}"
+}
+
+zle -N fzf-bookmarks-widget
+bindkey '^o' fzf-bookmarks-widget
+
 zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
+bindkey '^r' fzf-history-widget
+
+zle -N insert-double-roundbrackets
+bindkey '(' insert-double-roundbrackets

@@ -26,12 +26,13 @@ alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
-
 alias ,q='exit'
 alias n='babel-node'
 alias pdf='zathura'
+
 alias ivm='vim'
 alias vi='vim'
+
 alias df='df -h'
 alias sqlite='sqlite3'
 alias ping='ping -c1 google.com'
@@ -67,12 +68,3 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gp='git push'
 alias gl='git pull'
-
-## Global aliases
-alias -g W='|wc -w'
-alias -g G='|grep -wi --color'
-alias -g L='|less'
-alias -g H='|head'
-alias -g T='|tail'
-alias -g HL="--help"
-alias -g N='2>/dev/null'
