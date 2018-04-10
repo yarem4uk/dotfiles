@@ -14,11 +14,40 @@ import { ${1:name} } from './${2:$1}';
 $0
 endsnippet
 
-
 snippet cl "console.log" 
-console.log(${1:`!p
+console.log(${1:`!p 
 snip.rv = snip.v.text.strip().strip(";")
 `});
+endsnippet
+
+snippet fo "function" 
+${1:nameOffunciton}(${2:`!p 
+snip.rv = snip.v.text.strip().strip(";")
+`});
+endsnippet
+
+snippet js "JSON stringify"
+JSON.stringify(${1:obj});
+endsnippet
+
+snippet jp "JSON parse"
+JSON.parse(${1:obj});
+endsnippet
+
+snippet promise "new Promise"
+new Promise((resolve, reject) => {
+  ${1:statments}
+});
+endsnippet
+
+snippet body "body from request"
+const ${1:body} = [];
+res.on('data', (chunk) => {
+  $1.push(chunk.toString());
+}).on('end', () => {
+  const html = $1.join();
+  ${2:statment}
+});
 endsnippet
 
 # conditions
@@ -76,7 +105,7 @@ endsnippet
 
 # OPP
 
-snippet calls
+snippet class
 class ${1:NameOfClass} {
   $2
 }
@@ -92,3 +121,10 @@ snippet lodash
 import _ from 'lodash';
 $0
 endsnippet
+
+# nock
+
+snippet ndis "nock.disableNetConnect"
+nock.disableNetConnect();
+endsnippet
+

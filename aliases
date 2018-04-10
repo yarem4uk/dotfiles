@@ -40,7 +40,7 @@ alias phpu='phpunit'
 alias x='chmod +x'
 alias f='fzf'
 
-alias grep='grep -w --color'
+alias grep='egrep -w --color'
 
 alias ls='ls --color=auto --group-directories-first'
 alias la='ls -A --group-directories-first'

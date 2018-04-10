@@ -260,7 +260,7 @@ nnoremap <leader>f :normal! gg=G``<CR>
 
 nnoremap <leader>( :normal! a(<esc>f;i)<esc>
 " nnoremap <leader><space> :sh<esc>
-nnoremap <leader>e <C-z>
+nnoremap <leader>e <C-z> 
 "
 " AUTOCOMANDS
 " au bufread,bufnewfile,BufLeave *.php set dictionary+=~/.vim/dic/php_list

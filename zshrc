@@ -116,7 +116,9 @@ add-zsh-hook chpwd auto-ls-after-cd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
+# export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
+export FZF_DEFAULT_COMMAND="fd --type file"
+# export FZF_DEFAULT_OPTS="--inline-info"
 
 function fzf-bookmarks-widget() {
   cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac --height 10%| awk '{print $1}')
