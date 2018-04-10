@@ -154,9 +154,9 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 " let NERDTreeShowBookmarks=1
 
-noremap <silent> ,, :NERDTreeToggle /home/alex/hexlet/js/<CR>
+noremap <silent> ,, :NERDTreeToggle ~/hexlet/js/<CR>
 noremap <C-\> :NERDTreeFind<CR>
-" autocmd vimenter * NERDTree /home/alex/app/
+" autocmd vimenter * NERDTree ~/app/
 
 " BUFEXPLORER
 let g:bufExplorerDisableDefaultKeyMapping=1
