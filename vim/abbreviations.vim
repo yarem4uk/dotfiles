@@ -5,6 +5,8 @@
 iabbrev cosnt const
 iabbrev funciton function
 iabbrev retrun return
+iabbrev yeild yield
+iabbrev yiedl yield
 " iabbrev el PHP_EOL
 " iabbrev ds DIRECTORY_SEPARATOR
 " iabbrev php <?php

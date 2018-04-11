@@ -128,3 +128,16 @@ snippet ndis "nock.disableNetConnect"
 nock.disableNetConnect();
 endsnippet
 
+# generators
+
+snippet gen "generators"
+const ${1:generator} = function* () {
+  ${2:yield}
+};
+endsnippet
+
+snippet of "for..of"
+for (const ${1:v} of ${2:generator}) {
+  ${3:function}($1);
+}
+endsnippet
