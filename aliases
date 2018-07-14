@@ -27,8 +27,12 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 alias ,q='exit'
-alias n='babel-node'
 alias pdf='zathura'
+
+# NODE
+alias n='babel-node'
+alias ns='nodemon --exec babel-node --'
+alias nss='nodemon -q --exec babel-node --'
 
 alias ivm='vim'
 alias vi='vim'
@@ -51,6 +55,7 @@ alias uninstall='pacman -Rncs'
 alias install='yaourt -Sy --noconfirm'
 alias pacman='sudo pacman'
 alias npm='sudo npm'
+alias ms='make start'
 
 # Laravel/Lumen
 # alias artisan='php artisan'

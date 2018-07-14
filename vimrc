@@ -38,8 +38,14 @@ Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 
+" pug
+Plugin 'digitaltoad/vim-pug'
+
 " php 
 Plugin '2072/PHP-Indenting-for-VIm'
+
+" python 
+" Plugin 'klen/python-mode'
 
 " blade.php
 Plugin 'jwalton512/vim-blade'
@@ -80,7 +86,6 @@ set laststatus=2
 set foldmethod=indent
 set foldlevelstart=99
 
-" let mapleader=","
 let mapleader="\<Space>"
 
 if filereadable(expand("~/.vimrc_background"))

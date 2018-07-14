@@ -20,6 +20,12 @@ snip.rv = snip.v.text.strip().strip(";")
 `});
 endsnippet
 
+snippet ce "console.error" 
+console.error(${1:`!p 
+snip.rv = snip.v.text.strip().strip(";")
+`});
+endsnippet
+
 snippet fo "function" 
 ${1:nameOffunciton}(${2:`!p 
 snip.rv = snip.v.text.strip().strip(";")
@@ -140,4 +146,33 @@ snippet of "for..of"
 for (const ${1:v} of ${2:generator}) {
   ${3:function}($1);
 }
+endsnippet
+
+# ERROR
+
+snippet tc "try/catch"
+try {
+  ${1:statment}
+} catch (${2:err}) {
+  ${3:do}
+}
+endsnippet
+
+
+# Express 
+
+snippet exp "new Express()"
+const app = new Express();
+endsnippet
+
+snippet get "app.get(...)"
+app.get('${1:/}', (req, res) => {
+  ${2:res}
+});
+endsnippet
+
+snippet post "app.post(...)"
+app.post('${1:/}', (req, res) => {
+  ${2:res}
+});
 endsnippet
