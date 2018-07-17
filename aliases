@@ -14,7 +14,7 @@ if [[ $EUID -ne 0 ]]; then
   # alias cdu='cd ~/unit/web/'
 # alias cda='cd ~/hexlet/js/async/'
   alias js='cd ~/hexlet/js/abp/'
-  alias sync='cd ~/hexlet/js/sync/'
+  # alias sync='cd ~/hexlet/js/sync/'
   alias proto='cd ~/hexlet/js/prototypes/'
   alias config='cd ~/.config'
   # alias shop='cd ~/laravel/shop'

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd $HOME
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+vim +PluginInstall +qall
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+cd ~/.fzf
+
+./install
