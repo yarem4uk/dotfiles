@@ -82,7 +82,8 @@ if [[ $EUID == 0 ]]; then
   %{$fg[white]%}->%{$reset_color%} '
 else
   PROMPT=' %{$fg[white]%}%~ 
-  %{$fg[red]%}✘%{$reset_color%} '
+  %{$fg[red]%}>%{$reset_color%} '
+  # %{$fg[red]%}✘%{$reset_color%} '
 fi
 
 #✗

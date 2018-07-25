@@ -9,8 +9,9 @@ alias zless='vimpager'
 
 if [[ $EUID -ne 0 ]]; then 
 # alias cd='cd && ls'
-  alias cdd='cd ~/dotfiles/'
-  alias cdl='cd ~/downloads/'
+  alias cdd='cd ~/dotfiles'
+  alias cdo='cd ~/openbox'
+  alias cdl='cd ~/downloads'
   # alias cdu='cd ~/unit/web/'
 # alias cda='cd ~/hexlet/js/async/'
   alias js='cd ~/hexlet/js/abp/'
@@ -36,8 +37,13 @@ alias nss='nodemon -q --exec babel-node --'
 
 alias ivm='vim'
 alias vi='vim'
+alias rc='vim ~/dotfiles/zshrc'
+alias al='vim ~/.aliases'
+alias bm='vim ~/.config/bookmarks.cfg'
 
+alias root='sudo -i'
 alias df='df -h'
+alias du='du -hc -d1'
 alias sqlite='sqlite3'
 alias ping='ping -c1 google.com'
 alias phpu='phpunit'
@@ -48,6 +54,7 @@ alias grep='egrep -w --color'
 
 alias ls='ls --color=auto --group-directories-first'
 alias la='ls -A --group-directories-first'
+alias lh='ls -sh --group-directories-first'
 alias ll='ls -AlF --group-directories-first'
 alias ld='ls -d .* --group-directories-first'
 
