@@ -1,0 +1,33 @@
+snippet yield
+@yield('$1')
+endsnippet 
+
+snippet include
+@include('$1')
+endsnippet 
+
+snippet ext
+@extends('${1:layouts}')
+endsnippet
+
+snippet section
+@section('${1:content}')
+  $2
+@endsection
+endsnippet
+
+snippet foreach
+@foreach($1)
+  $2
+@endforeach
+endsnippet
+
+snippet if 
+@if($1)
+  $2
+@endif
+endsnippet
+
+snippet var
+{{ $1 }}
+endsnippet

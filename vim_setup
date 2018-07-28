@@ -1,8 +1,10 @@
 #!/bin/sh
 
+dir=~/dotfiles/snippets
+
 cd $HOME
 
-pacman -S fd vimpager ttf-monaco
+sudo pacman -S fd vimpager python
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -15,3 +17,17 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf
 
 ./install
+
+cd $dir
+
+mkdir ~/.vim/UltiSnips
+
+files=$(ls *snippets*)
+
+for file in $files;
+do
+  echo "Creating symlink to $file in ~/.vim/UltiSnips"
+  ln -s $dir/$file ~/.vim/UltiSnips/$file
+done
+
+echo '...all done for vim setup'

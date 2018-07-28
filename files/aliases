@@ -31,9 +31,9 @@ alias ,q='exit'
 alias pdf='zathura'
 
 # NODE
-alias n='babel-node'
-alias ns='nodemon --exec babel-node --'
-alias nss='nodemon -q --exec babel-node --'
+alias n='npx babel-node'
+alias ns='nodemon --exec npx babel-node --'
+alias nss='nodemon -q --exec npx babel-node --'
 
 alias ivm='vim'
 alias vi='vim'
@@ -61,7 +61,7 @@ alias ld='ls -d .* --group-directories-first'
 alias uninstall='pacman -Rncs'
 alias install='yaourt -Sy --noconfirm'
 alias pacman='sudo pacman'
-alias npm='sudo npm'
+# alias npm='sudo npm'
 alias ms='make start'
 
 # Laravel/Lumen
