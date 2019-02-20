@@ -34,6 +34,8 @@ Plugin 'w0rp/ale'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
+Plugin 'hail2u/vim-css3-syntax'
+
 " js
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
@@ -52,6 +54,9 @@ Plugin 'jwalton512/vim-blade'
 
 " yaml
 Plugin 'stephpy/vim-yaml'
+" vue
+Plugin 'posva/vim-vue'
+Plugin 'leafOfTree/vim-vue-plugin'
 call vundle#end()
 
 filetype plugin indent on
@@ -69,19 +74,21 @@ set cursorline
 set showcmd
 set showmatch
 set noshowmode
+set nojoinspaces
 
 set expandtab
 set softtabstop=2
 set shiftwidth=2
-" set autoindent
+set autoindent
 set smartindent
 
 set t_Co=256
-" set cmdheight=2
 set ignorecase
 set smartcase
-
 set laststatus=2
+
+set undodir=~/.vim/backups
+set undofile
 
 set foldmethod=indent
 set foldlevelstart=99
@@ -97,7 +104,7 @@ endif
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:ale_linters = {
       \   'markdown': [],
-      \   'javascript': ['eslint', 'flow'],
+      \   'javascript': ['eslint'],
       \}
 " let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_save = 1
@@ -121,27 +128,6 @@ let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
 
-" let g:lightline = {
-"       \ 'colorscheme': 'seoul256',
-"        \ 'active': {
-"        \   'left': [ [ 'mode', 'paste' ],
-"        \             ['gitbranch', 'readonly', 'filename', 'modified' ] ],
-"        \  'right': [ [ 'lineinfo' ],
-"        \            [ '' ],
-"        \            [ 'filetype' ] ] 
-"       \ },
-"       \    'component_function': {
-"       \   'gitbranch': 'fugitive#head'
-"       \ },
-"       \ }
-
-" let g:lightline.separator = { 'left': '', 'right': '' }
-" let g:lightline.subseparator = { 'left': '|', 'right': '|' }
-
-" STATUSLINE
-" let g:airline_section_z = ''
-" let g:airline_section_y = ''
-
 " ULTISNIPS
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
@@ -157,9 +143,13 @@ let NERDTreeIgnore = ['\.pyc$', 'node_modules$']
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
-" let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=1
 
-noremap <silent> ,, :NERDTreeToggle ~/hexlet/js/<CR>
+noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/shopping<CR>
+" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/stock-trader<CR>
+" noremap <silent> ,, :NERDTreeToggle ~/projects/nuxt/blog<CR>
+" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/dummy-project<CR>
+" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/vue-cli-delivery<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree ~/app/
 
@@ -168,13 +158,16 @@ let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
 
 " EMMET
-" let g:user_emmet_next_key = '<C-n>'
-" let g:user_emmet_prev_key = '<C-b>'
-" imap <expr> <C-i> emmet#expandAbbrIntelligent("\<C-i>")
+" let g:user_emmet_leader_key=','
 
 " FZF
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>; :Buffers<cr>
+" inoremap <expr> <C-j> fzf#vim#complete('cat $HOME/.config/css.cfg')
+
+" PYTHON
+
+let python_highlight_all=1
 
 " COMMAND MAPPINGS
 
@@ -192,6 +185,7 @@ noremap <C-h> <C-w><Left>
 " when you forgot to open your file with sudo 
 cnoremap w!! %!sudo tee > /dev/null %
 
+cnoreabbrev ss %s/
 cnoremap <UP>    <NOP>
 cnoremap <Down>  <NOP>
 cnoremap <Left>  <NOP>
@@ -261,30 +255,17 @@ noremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>N :setlocal number!<cr>
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
-nnoremap <leader>f :normal! gg=G``<CR>
-
+nnoremap <leader>f :normal!  gg=G``<CR>
 nnoremap <leader>( :normal! a(<esc>f;i)<esc>
-" nnoremap <leader><space> :sh<esc>
-nnoremap <leader>e <C-z> 
-"
-" AUTOCOMANDS
-" au bufread,bufnewfile,BufLeave *.php set dictionary+=~/.vim/dic/php_list
-" set dictionary+=~/.vim/dic/php
+nnoremap <leader>e <C-z>
 
 " au BufNewFile,BufRead *.blade.php setl ft=html
-au bufread,bufnewfile sh setl sts=2 sw=2
-au bufread,bufnewfile zsh setl sts=2 sw=2
-au bufread,bufnewfile vim setl sts=2 sw=2
-au bufread,bufnewfile *.js setl sts=2 sw=2
-au bufread,bufnewfile *.php setl sts=2 sw=2
-au bufread,bufnewfile *.html setl sts=2 sw=2
-au BufRead,BufNewFile *.phtml setl ft=php sts=2 sw=2
-au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
 
-" if (&ft == 'html')
-"   let g:user_emmet_next_key = '<C-j>'
-"   let g:user_emmet_prev_key = '<C-k>'
-" endif
+au bufread,bufnewfile *.py setl sts=4 sw=4 tw=79
+au bufread,bufnewfile *.html setl sts=2 sw=4 tw=79
+au BufRead,BufNewFile *.phtml setl ft=php 
+au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
+" au BufRead,BufNewFile *.vue nnoremap <leader>h :call SetCss()<cr>
 
 function! SetHTML()
   if (&ft == 'php')
@@ -293,6 +274,14 @@ function! SetHTML()
     set ft=php
   endif
 endfunc
+
+" function! SetCss()
+"   if (&ft == 'vue')
+"     set ft=css
+"   elseif (&ft == 'css')
+"     set ft=vue
+"   endif
+" endfunc
 
 " au bufread *.phtml call Try()
 " function! Try()

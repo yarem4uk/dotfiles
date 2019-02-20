@@ -1,5 +1,5 @@
 #!/bin/sh
-dir=~/dotfiles/files
+dir=/home/alex/dotfiles/files
 files="zshrc aliases"
 
 cd $dir

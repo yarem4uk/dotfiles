@@ -82,7 +82,7 @@ if [[ $EUID == 0 ]]; then
   %{$fg[white]%}->%{$reset_color%} '
 else
   PROMPT=' %{$fg[white]%}%~ 
-  %{$fg[red]%}>%{$reset_color%} '
+  %{$fg[green]%}->%{$reset_color%} '
   # %{$fg[red]%}✘%{$reset_color%} '
 fi
 
@@ -123,8 +123,9 @@ export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
 
 function fzf-bookmarks-widget() {
   cd $(cat "$HOME/.config/bookmarks.cfg" | fzf --tiebreak=begin --tac --height 10%| awk '{print $1}')
+  # cd $(ls | fzf --tiebreak=begin --tac --height 10%| awk '{print $1}')
   zle reset-prompt
-  # zle redisplay
+  zle redisplay
 }
 
 function fzf-history-widget() {
@@ -132,16 +133,32 @@ function fzf-history-widget() {
   zle redisplay
 }
 
-function insert-double-roundbrackets() {
+function insert-double-roundBrackets() {
   LBUFFER="${LBUFFER}("
   RBUFFER=")${RBUFFER}"
+}
+
+function insert-double-curlyBrackets() {
+  LBUFFER="${LBUFFER}{"
+  RBUFFER="}${RBUFFER}"
+}
+
+function insert-double-singleQuotes() {
+  LBUFFER="${LBUFFER}'"
+  RBUFFER="'${RBUFFER}"
 }
 
 zle -N fzf-bookmarks-widget
 bindkey '^o' fzf-bookmarks-widget
 
 zle -N fzf-history-widget
-bindkey '^r' fzf-history-widget
+bindkey '^]' fzf-history-widget
 
-zle -N insert-double-roundbrackets
-bindkey '(' insert-double-roundbrackets
+zle -N insert-double-roundBrackets
+bindkey '(' insert-double-roundBrackets
+
+zle -N insert-double-curlyBrackets
+bindkey '{' insert-double-curlyBrackets
+
+zle -N insert-double-singleQuotes
+bindkey "'" insert-double-singleQuotes

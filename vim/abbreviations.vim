@@ -11,9 +11,8 @@ iabbrev yiedl yield
 " iabbrev ds DIRECTORY_SEPARATOR
 " iabbrev php <?php
 
-" iabbrev eq ===
-" iabbrev ne !=
-" iabbrev jj =>
+" au bufread,bufnewfile *.vue iabbrev hr <hr>
+
 
 " iabbrev ias import assert from 'assert';
 

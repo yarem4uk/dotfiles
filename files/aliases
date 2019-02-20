@@ -8,17 +8,13 @@ alias less='vimpager'
 alias zless='vimpager'
 
 if [[ $EUID -ne 0 ]]; then 
-# alias cd='cd && ls'
   alias cdd='cd ~/dotfiles'
   alias cdo='cd ~/openbox'
   alias cdl='cd ~/downloads'
-  # alias cdu='cd ~/unit/web/'
-# alias cda='cd ~/hexlet/js/async/'
-  alias js='cd ~/hexlet/js/abp/'
-  # alias sync='cd ~/hexlet/js/sync/'
-  alias proto='cd ~/hexlet/js/prototypes/'
+  alias screen='cd ~/tmp/screenshots/'
   alias config='cd ~/.config'
-  # alias shop='cd ~/laravel/shop'
+  alias swap='cd ~/.cache/vim/swap'
+  alias usb='cd /mnt/usb'
 fi
 
 alias cd-='cd -'
@@ -27,17 +23,16 @@ alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
-alias ,q='exit'
 alias pdf='zathura'
 
 # NODE
 alias n='npx babel-node'
-alias ns='nodemon --exec npx babel-node --'
-alias nss='nodemon -q --exec npx babel-node --'
+alias ns='nodemon --exec babel-node --'
+alias nss='nodemon -q --exec babel-node --'
 
 alias ivm='vim'
 alias vi='vim'
-alias rc='vim ~/dotfiles/zshrc'
+alias rc='vim ~/dotfiles/files/zshrc'
 alias al='vim ~/.aliases'
 alias bm='vim ~/.config/bookmarks.cfg'
 
@@ -64,9 +59,6 @@ alias pacman='sudo pacman'
 # alias npm='sudo npm'
 alias ms='make start'
 
-# Laravel/Lumen
-# alias artisan='php artisan'
-
 ## Docker
 alias start='systemctl start docker.service'
 alias stop='systemctl stop docker.service'
@@ -74,9 +66,6 @@ alias stop='systemctl stop docker.service'
 ## Git
 alias gs='git status'
 alias ga='git add .'
-alias gcl='git clone'
-alias gbr='git branch'
-alias gci='git commit'
-alias gco='git checkout'
-alias gp='git push'
-alias gl='git pull'
+alias gc='git commit'
+alias gl='git log --oneline --reverse'
+alias gb='git branch'

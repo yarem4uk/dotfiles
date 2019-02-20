@@ -80,6 +80,12 @@ switch (${1:state}) {
 }
 endsnippet
 
+snippet edf "export default function"
+export default (${1:args}) => {
+  ${2:statemant}
+};
+endsnippet
+
 snippet fn
 const ${1:name} = (${2:args}) => {
   ${3:statemant}
@@ -129,7 +135,6 @@ $0
 endsnippet
 
 # nock
-
 snippet ndis "nock.disableNetConnect"
 nock.disableNetConnect();
 endsnippet
@@ -160,11 +165,6 @@ endsnippet
 
 
 # Express 
-
-snippet exp "new Express()"
-const app = new Express();
-endsnippet
-
 snippet get "app.get(...)"
 app.get('${1:/}', (req, res) => {
   ${2:res}
@@ -175,4 +175,93 @@ snippet post "app.post(...)"
 app.post('${1:/}', (req, res) => {
   ${2:res}
 });
+endsnippet
+
+# Jest
+snippet ds "describe it"
+describe('${1:describ}', () => {
+  it('${2:test describ}', () => {
+    ${3:statment}
+  });
+});
+endsnippet
+
+snippet it "test branch"
+it('${1:test describ}', () => {
+  ${2:statment}
+});
+endsnippet
+
+snippet tobe "expect toBe"
+expect(${1:expect}).toBe(${2:value});
+endsnippet
+
+snippet toundef "expect toBe.Undefined"
+expect(${1:expect}).toBe.Undefined(${2:value});
+endsnippet
+
+snippet tocontain "expect toContain"
+expect(${1:expect}).toContain(${2:value});
+endsnippet
+
+# HTTP
+
+snippet hget "http get"
+http.get('http://${1:host}', res => {
+  ${2:res}
+});
+endsnippet
+
+#Vue
+
+snippet vue
+new Vue({
+  el: '#vue-app',
+
+  data: {
+    $1
+  },
+
+  methods: {
+    $2
+  },
+
+});
+endsnippet
+
+snippet st "setTimeout function"
+setTimeout(() => {
+  ${2:statment}
+}, ${1:delay});
+endsnippet
+
+
+global !p
+def complete(t, opts):
+    if t:
+        opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+    if len(opts) == 1:
+        return opts[0]
+    return '(' + '|'.join(opts) + ')'
+endglobal
+
+
+snippet vs "state"  
+$1`!p
+snip.rv= complete(t[1], ['state', 'getters', 'mutations', 'actions',])
+`: {
+  ${2:components}
+},
+endsnippet
+
+snippet getters "getters"
+const getters = {
+  $1
+};
+endsnippet
+
+snippet gm "methods in getters"
+${1:nameOfGetters}: state => {
+  ${2:statement}
+},
 endsnippet

@@ -1,0 +1,24 @@
+snippet pr  "print" 
+print(${1:`!p 
+snip.rv = snip.v.text.strip()
+`})
+endsnippet
+
+snippet filter "filter"
+filter(lambda ${1:x}: ${2:statment}, list)
+endsnippet
+
+snippet map "map"
+map(lambda ${1:x}: ${2:statment}, list)
+endsnippet
+
+snippet list  "list" 
+list(${1:`!p 
+snip.rv = snip.v.text.strip()
+`})
+endsnippet
+
+snippet def "function"
+def ${1:name}(${2:data}):
+    ${3:pass}
+endsnippet

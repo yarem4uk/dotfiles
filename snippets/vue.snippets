@@ -1,0 +1,180 @@
+snippet tem "template"
+<template>
+  $1
+</template>
+
+<script>
+export default {
+  $2
+}
+</script>
+
+<style>
+  $3
+</style>
+endsnippet
+
+snippet cl "console.log" 
+console.log(${1:`!p 
+snip.rv = snip.v.text.strip().strip(";")
+`});
+endsnippet
+
+snippet import "import" b
+import ${1:name} from '${2:.}/components/`!p
+snip.rv = t[1]
+`';
+endsnippet
+
+snippet m
+${1:name of method}() {
+  ${2:statment}
+},
+endsnippet
+
+snippet bind "bind"
+'${1:name_of_directive}': {
+  bind(el, binding, vnode) {
+    ${2:statment}
+  }
+}
+endsnippet
+
+snippet script
+<script>
+export default {
+  ${1:statement}
+}
+</script>
+endsnippet
+
+global !p
+def complete(t, opts):
+    if t:
+        opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+    if len(opts) == 1:
+        return opts[0]
+    return '(' + '|'.join(opts) + ')'
+endglobal
+
+snippet me "methods"  
+$1`!p
+snip.rv= complete(t[1], ['components', 'computed', 'methods', 'props', 'directives', 'filters', 'watch',])
+`: {
+  ${2:components}
+},
+endsnippet
+
+snippet lc "lifecycle"  
+$1`!p
+snip.rv= complete(t[1], ['created', 'mounted', 'destroyed', 'activated', 'deactivated', 'updated'])
+`() {
+  ${2:console.log('`!p snip.rv=t[1]`$3')};
+},
+endsnippet
+
+snippet '^ *data' "data" r
+  data() {
+    return {
+      ${1:data}
+    }
+  },
+endsnippet
+
+snippet asyncdata
+asyncData(${1:context}, ${2:callback}) {
+  ${3:data}
+}
+endsnippet
+
+snippet '([mpwh])(\d+)' "margin" r
+`!p 
+placeholders = ['margin', 'padding', 'width', 'height']
+snip.rv = list(filter(lambda x: x.startswith(match.group(1)), placeholders))[0] + ': ' + match.group(2) + "px;"
+`
+endsnippet
+
+snippet emit "emit"
+this.$emit('${1:emit}', '${2:data}');
+endsnippet
+
+snippet t "custom tag"
+<${1:div}>$2</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet '^(\s+)if|^if' "if" r
+`!p
+enter = ''
+if match.group(1):
+    enter = match.group(1)
+snip.rv = enter
+`if ($1) {
+`!p snip.rv = enter + '  '`${2:${VISUAL:statemant}}
+`!p snip.rv = enter`}
+endsnippet 
+
+snippet else 
+else {
+  $1
+}
+endsnippet
+
+snippet st "setTimeout function"
+setTimeout(() => {
+  ${2:statment}
+}, ${1:delay});
+endsnippet
+
+snippet si "setInterval function"
+setInterval(() => {
+  ${2:statment}
+}, ${1:delay});
+endsnippet
+
+snippet '(\()(f)|\bf' "lambda" r
+`!p
+if match.group(1) and match.group(1) != 'f':
+  snip.rv = match.group()[:-1]
+`($1) => {$2}
+endsnippet
+
+snippet model "v-model"
+v-model="$1"
+endsnippet
+
+snippet for "v-for"
+v-for="${1:thing} in ${2:things}"
+endsnippet
+
+snippet show "v-show"
+v-show="$1"
+endsnippet
+
+snippet '(<.+)(if)' "if" r
+`!p snip.rv = match.group(1) + 'v-' + match.group(2)`="$1"
+endsnippet
+
+snippet click "click"
+@click="$1"
+endsnippet
+
+snippet '(trans)\s(.+)'  "transition" r
+.`!p 
+name = match.group(2)
+snip.rv = name
+`-enter {
+  $1
+}
+
+.`!p snip.rv = name`-enter-active {
+  $2
+}
+
+.`!p snip.rv = name`-leave {
+  $3
+}
+
+.`!p snip.rv = name`-leave-active {
+  $4
+}
+endsnippet
