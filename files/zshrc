@@ -17,14 +17,6 @@ setopt INC_APPEND_HISTORY
 setopt share_history
 setopt append_history
 
-function h(){
-  if [[ -z "$1" ]]; then
-    history  0 | tail -n 30
-  else
-    history 0 | grep "$*"
-  fi
-}
-
 ##Расширенный глобинг
 setopt extended_glob
 
@@ -42,7 +34,7 @@ if [[ -f $HOME/.aliases ]]; then
   source $HOME/.aliases
 fi
 
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 
 ##Цветной grep
 export GREP_COLOR='1;33'
@@ -117,8 +109,9 @@ add-zsh-hook chpwd auto-ls-after-cd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
-# export FZF_DEFAULT_COMMAND="fd --type file"
+# export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
+# export FZF_DEFAULT_COMMAND="fd --type f ."
+export FZF_DEFAULT_COMMAND="rg --files --smart-case"
 # export FZF_DEFAULT_OPTS="--inline-info"
 
 function fzf-bookmarks-widget() {
@@ -152,7 +145,7 @@ zle -N fzf-bookmarks-widget
 bindkey '^o' fzf-bookmarks-widget
 
 zle -N fzf-history-widget
-bindkey '^]' fzf-history-widget
+bindkey '^k' fzf-history-widget
 
 zle -N insert-double-roundBrackets
 bindkey '(' insert-double-roundBrackets

@@ -3,6 +3,7 @@
 alias reload='source ~/.zshrc'
 
 alias rmf='rm -rf'
+alias rv='rm -rf ~/.cache/vim/swap'
 
 alias less='vimpager'
 alias zless='vimpager'
@@ -18,12 +19,13 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 alias cd-='cd -'
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
-alias pdf='zathura'
+alias z='zathura'
+alias book='cd ~/tmp/book/'
 
 # NODE
 alias n='npx babel-node'
@@ -47,7 +49,6 @@ alias f='fzf'
 
 alias grep='egrep -w --color'
 
-alias ls='ls --color=auto --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias lh='ls -sh --group-directories-first'
 alias ll='ls -AlF --group-directories-first'

@@ -33,11 +33,15 @@ snip.rv = snip.v.text.strip().strip(";")
 endsnippet
 
 snippet js "JSON stringify"
-JSON.stringify(${1:obj});
+JSON.stringify(${1:`!p
+snip.rv = snip.v.text.strip().strip(";")
+`obj});
 endsnippet
 
 snippet jp "JSON parse"
-JSON.parse(${1:obj});
+JSON.parse(${1:`!p
+snip.rv = snip.v.text.strip().strip(";")
+`obj});
 endsnippet
 
 snippet promise "new Promise"
