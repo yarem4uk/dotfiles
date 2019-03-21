@@ -122,8 +122,9 @@ endsnippet
 # OPP
 
 snippet class
-class ${1:NameOfClass} {
+export default class ${1:Name} {
   $2
+
 }
 endsnippet
 
@@ -239,6 +240,14 @@ setTimeout(() => {
 }, ${1:delay});
 endsnippet
 
+snippet rf "readFile"
+fs.readFile(${1:path/to/file}, 'utf8', (err, ${2:data}) => {
+  if (err) {
+    console.log(err);
+  }
+  ${3:console.log($2)};
+});
+endsnippet
 
 global !p
 def complete(t, opts):

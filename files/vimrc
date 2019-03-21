@@ -145,11 +145,7 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeShowBookmarks=1
 
-noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/shopping<CR>
-" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/stock-trader<CR>
-" noremap <silent> ,, :NERDTreeToggle ~/projects/nuxt/blog<CR>
-" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/dummy-project<CR>
-" noremap <silent> ,, :NERDTreeToggle ~/projects/vue/udemy/vue-cli-delivery<CR>
+noremap <silent> ,, :NERDTreeToggle ~/projects/udemy/express/<CR>
 noremap <C-\> :NERDTreeFind<CR>
 " autocmd vimenter * NERDTree ~/app/
 

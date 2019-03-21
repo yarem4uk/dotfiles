@@ -16,6 +16,7 @@ if [[ $EUID -ne 0 ]]; then
   alias config='cd ~/.config'
   alias swap='cd ~/.cache/vim/swap'
   alias usb='cd /mnt/usb'
+  alias tmp='cd ~/tmp'
 fi
 
 alias cd-='cd -'
