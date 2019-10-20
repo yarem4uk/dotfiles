@@ -1,0 +1,11 @@
+rofi.font: Source Code Pro Regular 18
+rofi.hide-scrollbar: true
+rofi.width: 50
+rofi.lines: 15
+rofi.padding: 20
+rofi.columns: 1
+rofi.color-enabled: true
+rofi.color-window: #2f343f, #2f343f, #2f343f
+rofi.color-normal: #2f343f, #b0b0b0, #2f343f, #404755, #ffffff
+rofi.color-active: #2f343f, #f3f4f5, #2f343f, #404755, #80cbc4
+/* rofi.color-urgent: #2f343f, #ff1844, #2f343f, #383838, #ff1844 */
