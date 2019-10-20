@@ -1,6 +1,6 @@
-install_user:
+user:
 	./user.sh
-install_root:
+root:
 	sudo ./root.sh
-install_vim:
+vim:
 	./vim_setup
