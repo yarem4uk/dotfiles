@@ -7,16 +7,21 @@ alias rv='rm -rf ~/.cache/vim/swap'
 
 alias less='vimpager'
 alias zless='vimpager'
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias usb='sudo mount /dev/sdb mnt'
 
 if [[ $EUID -ne 0 ]]; then 
-  alias cdd='cd ~/dotfiles'
+  alias cdd="cd ~/dotfiles"
   alias cdo='cd ~/openbox'
   alias cdl='cd ~/downloads'
   alias screen='cd ~/tmp/screenshots/'
   alias config='cd ~/.config'
+  alias script='cd ~/.scripts/i3'
   alias swap='cd ~/.cache/vim/swap'
-  alias usb='cd /mnt/usb'
+  # alias usb='cd /mnt/usb'
   alias tmp='cd ~/tmp'
+  alias book='cd ~/tmp/book/'
 fi
 
 alias cd-='cd -'
@@ -26,7 +31,6 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 alias z='zathura'
-alias book='cd ~/tmp/book/'
 
 # NODE
 alias n='npx babel-node'
@@ -71,3 +75,6 @@ alias ga='git add .'
 alias gc='git commit'
 alias gl='git log --oneline --reverse'
 alias gb='git branch'
+
+## i3
+alias ci='vim ~/.config/i3/config'

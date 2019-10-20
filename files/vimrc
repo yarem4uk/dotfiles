@@ -39,6 +39,7 @@ Plugin 'hail2u/vim-css3-syntax'
 " js
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
+Plugin 'briancollins/vim-jst'
 
 " pug
 Plugin 'digitaltoad/vim-pug'
@@ -143,10 +144,11 @@ let NERDTreeIgnore = ['\.pyc$', 'node_modules$']
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeShowBookmarks=1
+" let NERDTreeShowBookmarks=1
 
-noremap <silent> ,, :NERDTreeToggle ~/projects/udemy/express/<CR>
 noremap <C-\> :NERDTreeFind<CR>
+
+noremap <silent> ,, :NERDTreeToggle ~/projects/udemy/ejs/<CR>
 " autocmd vimenter * NERDTree ~/app/
 
 " BUFEXPLORER
@@ -257,6 +259,7 @@ nnoremap <leader>e <C-z>
 
 " au BufNewFile,BufRead *.blade.php setl ft=html
 
+au BufNewFile,BufRead *.ejs set filetype=html
 au bufread,bufnewfile *.py setl sts=4 sw=4 tw=79
 au bufread,bufnewfile *.html setl sts=2 sw=4 tw=79
 au BufRead,BufNewFile *.phtml setl ft=php 
