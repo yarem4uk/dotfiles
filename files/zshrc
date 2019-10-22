@@ -1,3 +1,5 @@
+export PATH=$PATH:$HOME/.scripts/
+
 autoload -Uz compinit && compinit -i
 umask 022
 setopt autocd

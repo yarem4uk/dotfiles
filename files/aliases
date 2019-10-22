@@ -9,7 +9,7 @@ alias less='vimpager'
 alias zless='vimpager'
 alias mount='sudo mount'
 alias umount='sudo umount'
-alias usb='sudo mount /dev/sdb mnt'
+alias usb='sudo mount /dev/sdb mnt && cd mnt'
 
 if [[ $EUID -ne 0 ]]; then 
   alias cdd="cd ~/dotfiles"
