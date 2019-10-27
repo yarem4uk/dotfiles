@@ -46,6 +46,7 @@ bindkey -v
 
 export KEYTIMEOUT=1
 
+
 #Добавление правого PROMT с именем git brunch and git status 
 function gprompt() {
   mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
@@ -145,6 +146,11 @@ function insert-double-singleQuotes() {
   RBUFFER="'${RBUFFER}"
 }
 
+function insert-double-singleGrave() {
+  LBUFFER="${LBUFFER}\`"
+  RBUFFER="\`${RBUFFER}"
+}
+
 zle -N fzf-bookmarks-widget
 bindkey '^o' fzf-bookmarks-widget
 
@@ -160,3 +166,5 @@ bindkey '{' insert-double-curlyBrackets
 zle -N insert-double-singleQuotes
 bindkey "'" insert-double-singleQuotes
 
+zle -N insert-double-singleGrave
+bindkey "\`" insert-double-singleGrave
