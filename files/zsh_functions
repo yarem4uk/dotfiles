@@ -1,0 +1,4 @@
+functions help() {
+  dir=~/.help/$1
+  cat $dir
+}

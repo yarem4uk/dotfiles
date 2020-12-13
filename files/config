@@ -1,7 +1,7 @@
 [options]
 allow_bold = false
 #audible_bell = false
-#clickable_url = true
+# clickable_url = true
 #dynamic_title = true
 font = Source Code Pro Regular 19
 fullscreen = true
@@ -98,7 +98,9 @@ foreground_bold     = #e0e0e0
 cursor              = #f3f4f5
 cursor_foreground   = #1d1f21
 # background          = rgba(29, 31, 33, 0.9)
-background          = rgba(47, 52, 63, 0.8)
+# background          = rgba(47, 52, 63, 0.8)
+background          = rgba(46, 52, 64, 0.9)
+# background          = rgba(47, 52, 63)
 
 # 16 color space
 

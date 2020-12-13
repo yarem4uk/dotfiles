@@ -1,4 +1,8 @@
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="termite"
 export BROWSER="chromium"
 export READER="zathura"
+export TERM='xterm-termite'
+export arch=$HOME'/mnt/arch'
+export usb=$HOME'/mnt/usb'
+export lo='http://localhost'

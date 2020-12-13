@@ -1,5 +1,11 @@
 autoload -Uz compinit && compinit -i
+
 umask 022
+
+# default mask
+# -rwxr-xr-x
+# 777 - 022 = 755
+
 setopt autocd
 
 ###Настройка истории
@@ -25,11 +31,15 @@ stty stop undef
 stty start undef
 
 # export EDITOR='vim'
-export PAGER='vimpager'
+# export PAGER='nvimpager'
 
 ##Загрузка алиасов
-if [[ -f $HOME/.aliases ]]; then 
+if [[ -f $HOME/.aliases ]]; then
   source $HOME/.aliases
+fi
+
+if [[ -f $HOME/.zsh_functions ]]; then
+  source $HOME/.zsh_functions
 fi
 
 alias ls='ls --color=auto --group-directories-first'
@@ -47,7 +57,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 
-#Добавление правого PROMT с именем git brunch and git status 
+#Добавление правого PROMT с именем git brunch and git status
 function gprompt() {
   mes=`git symbolic-ref HEAD 2>/dev/null | cut -d / -f 3`
   durty=`git diff --shortstat 2> /dev/null | tail -n1`
@@ -56,10 +66,11 @@ function gprompt() {
   red=%{$fg[red]%}
   yellow=%{$fg[yellow]%}
   reset=%{$reset_color%}
-  if [[ "$mes" != "" ]]; then 
+  if [[ "$mes" != "" ]]; then
     if [[ $durty != "" ]]; then
       echo "$red $mes $reset"
-    else 
+      # echo "$(tput setaf 16) $mes $(tput sgr0)"
+    else
       echo "$blue $mes $reset"
     fi
   fi
@@ -70,21 +81,23 @@ RPROMPT='$(gprompt) '
 #PROMPT for user and root
 
 if [[ $EUID == 0 ]]; then
-  PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~ 
+  PROMPT=' %{$fg[red]%} (root) %{$fg[white]%}%~
   %{$fg[white]%}->%{$reset_color%} '
 else
-  PROMPT=' %{$fg[white]%}%~ 
+  # PROMPT=' $(tput setaf 246)%~$(tput sgr0)
+  PROMPT=' %{$fg[white]%}%~
   %{$fg[green]%}->%{$reset_color%} '
   # %{$fg[red]%}✘%{$reset_color%} '
 fi
 
 #✗
-#Поиск по истории клавишами p и n в стиле vim 
+#Поиск по истории клавишами p и n в стиле vim
 bindkey '^p'  history-beginning-search-backward
 bindkey '^n'  history-beginning-search-forward
 #
 # export TERM='xterm-256color'
 autoload -U colors && colors
+autoload -Uz surround
 
 setopt prompt_subst
 
@@ -115,8 +128,8 @@ add-zsh-hook chpwd auto-ls-after-cd
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # export FZF_DEFAULT_COMMAND="fd --type file . $HOME"
-# export FZF_DEFAULT_COMMAND="fd --type f ."
-export FZF_DEFAULT_COMMAND="rg --files --smart-case"
+export FZF_DEFAULT_COMMAND="fd --type f ."
+# export FZF_DEFAULT_COMMAND="rg --files --smart-case"
 # export FZF_DEFAULT_OPTS="--inline-info"
 
 function fzf-bookmarks-widget() {
@@ -168,3 +181,12 @@ bindkey "'" insert-double-singleQuotes
 
 zle -N insert-double-singleGrave
 bindkey "\`" insert-double-singleGrave
+
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+# bindkey -M visual S add-surround

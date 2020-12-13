@@ -1,0 +1,13 @@
+! keycode   9 = Escape NoSymbol Escape
+keycode  10 = 8 exclam 8 exclam
+keycode  11 = 7 at 7 quotedbl
+keycode  12 = 3 braceleft 3 numerosign
+keycode  13 = 4 braceright 4 semicolon
+keycode  14 = 5 ampersand 5 percent
+keycode  15 = 6 asciicircum 6 colon
+keycode  16 = 2 asterisk 2 question
+keycode  17 = 1 dollar 1 asterisk
+keycode  34 = bracketleft percent Cyrillic_ha Cyrillic_HA
+keycode  35 = bracketright numbersign Cyrillic_hardsign Cyrillic_HARDSIGN
+! keycode  105 = backslash bar backslash slash
+! keycode 51

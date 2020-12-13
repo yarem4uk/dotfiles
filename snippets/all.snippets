@@ -1,0 +1,15 @@
+snippet '(?<!o)MM' "object" rA
+{ $1 }$0
+endsnippet
+
+snippet '(?<!o)mm' "array" rA
+[$1]$0
+endsnippet
+
+snippet 'jj' "parentheses" rA
+($1)$0
+endsnippet
+
+snippet '(\w+(\.\w+)*)(\.dd)' "interpolation" rA
+${`!p snip.rv = match.group(1)`}$0
+endsnippet

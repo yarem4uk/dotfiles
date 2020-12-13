@@ -2,6 +2,10 @@
 
 alias reload='source ~/.zshrc'
 
+alias rm='rm -r'
+alias cp='cp -r'
+alias mkdir='mkdir -p'
+
 alias rmf='rm -rf'
 alias rv='rm -rf ~/.cache/vim/swap'
 
@@ -10,8 +14,12 @@ alias zless='vimpager'
 alias mount='sudo mount'
 alias umount='sudo umount'
 alias usb='sudo mount /dev/sdb mnt && cd mnt'
+alias wake='\a'
+alias sv='sxiv'
 
-if [[ $EUID -ne 0 ]]; then 
+
+
+if [[ $EUID -ne 0 ]]; then
   alias cdd="cd ~/dotfiles"
   alias cdo='cd ~/openbox'
   alias cdl='cd ~/downloads'
@@ -20,8 +28,11 @@ if [[ $EUID -ne 0 ]]; then
   alias script='cd ~/.scripts/i3'
   alias swap='cd ~/.cache/vim/swap'
   # alias usb='cd /mnt/usb'
+  alias fl='cd ~/freelance'
   alias tmp='cd ~/tmp'
   alias book='cd ~/tmp/book/'
+  alias wk='cd ~/work'
+  alias snippet='cd ~/.config/nvim/UltiSnips'
 fi
 
 alias cd-='cd -'
@@ -31,19 +42,22 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
 alias z='zathura'
+alias ydl='youtube-dl'
 
 # NODE
 alias n='npx babel-node'
 alias ns='nodemon --exec babel-node --'
 alias nss='nodemon -q --exec babel-node --'
 
-alias ivm='vim'
+alias vim='nvim'
+alias ivm='nvim'
 alias vi='vim'
 alias rc='vim ~/dotfiles/files/zshrc'
 alias al='vim ~/.aliases'
 alias bm='vim ~/.config/bookmarks.cfg'
 
 alias root='sudo -i'
+alias c='cat'
 alias df='df -h'
 alias du='du -hc -d1'
 alias sqlite='sqlite3'
@@ -56,7 +70,7 @@ alias grep='egrep -w --color'
 
 alias la='ls -A --group-directories-first'
 alias lh='ls -sh --group-directories-first'
-alias ll='ls -AlF --group-directories-first'
+alias ll='ls -AlFh --group-directories-first --time-style=long-iso'
 alias ld='ls -d .* --group-directories-first'
 
 alias uninstall='pacman -Rncs'
@@ -75,6 +89,8 @@ alias ga='git add .'
 alias gc='git commit'
 alias gl='git log --oneline --reverse'
 alias gb='git branch'
+alias gcb='git checkout -b'
+alias gcm='git checkout master'
 
 ## i3
 alias ci='vim ~/.config/i3/config'

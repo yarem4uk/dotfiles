@@ -1,79 +1,150 @@
 # nodejs
+
+# snippet '(\bon|new|is|get|create|build|to)(\w)(\w+)' "camelCase" rAi
+# `!p
+# capital = match.group(2)
+# snip.rv = match.group(1) + capital.title() + match.group(3)`
+# endsnippet
+
+# snippet 'co[n|s][n|s]t' "const" rbA
+# const $1 = $2
+# $0
+# endsnippet
+
+# snippet '\.ne' "not equal" rA
+# !== $0
+# endsnippet
+
+snippet '\,\.' "arrow" rA
+=> $0
+endsnippet
+
+snippet '(\w+)(\.th)' "tag" rA
+<`!p
+if match.group(1) == 'a':
+  snip.rv = match.group(1) + ' ' + 'href=""'
+else:
+  snip.rv = match.group(1)
+`>$1</`!p
+snip.rv = match.group(1)`>
+endsnippet
+
 snippet im "import" b
-import ${1:name} from '${2:$1}';
+import ${1:name} from '${2:$1}'
 $0
 endsnippet
 
-snippet imas "import" b
-import * as ${1:name} from '${2:$1}';
+snippet ims "import" b
+import './${1:name}'
+$0
+endsnippet
+
+snippet imf "import" bA
+import ${1:name} from '${2:./$1}'
+$0
+endsnippet
+
+snippet imas "import" bA
+import * as ${1:name} from '${2:$1}'
 $0
 endsnippet
 
 snippet import "import" b
-import { ${1:name} } from './${2:$1}';
+import { ${1:name} } from './${2:$1}'
 $0
 endsnippet
 
-snippet cl "console.log" 
-console.log(${1:`!p 
+snippet 'cm' "console.log" rA
+console.log(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`});
+`})
 endsnippet
 
-snippet ct "console.table" 
-console.table(${1:`!p 
+snippet 'cd' "console.dir" r
+console.dir(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`});
+`})
 endsnippet
 
-snippet ce "console.error" 
-console.error(${1:`!p 
+# snippet '(\w+)\.cl' "console.log" rA
+# console.log(`!p
+# snip.rv = match.group(1)
+# `)
+# endsnippet
+
+snippet ct "console.table"
+console.table(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`});
+`})
 endsnippet
 
-snippet fo "function" 
-${1:nameOffunciton}(${2:`!p 
+snippet ce "console.error"
+console.error(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`});
+`})
 endsnippet
 
-snippet js "JSON stringify"
+snippet fo "function"
+${1:name}(${2:`!p
+snip.rv = snip.v.text.strip().strip(";")
+`})
+endsnippet
+
+snippet 'jsstring' "JSON stringify" rA
 JSON.stringify(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`obj});
+`obj})
 endsnippet
 
-snippet jp "JSON parse"
+snippet 'jsparse' "JSON parse" rA
 JSON.parse(${1:`!p
 snip.rv = snip.v.text.strip().strip(";")
-`obj});
+`obj})
 endsnippet
 
 snippet promise "new Promise"
 new Promise((resolve, reject) => {
   ${1:statments}
-});
+})
+endsnippet
+
+snippet '\.then' "Promise console.log" rA
+.then(${1:data} => ${2:$1})$0
+endsnippet
+
+snippet '(pcl)' "Promise console.log" r
+then(i => console.log(i))
+endsnippet
+
+snippet '(tcl)' "then console.log" r
+then(console.log)
 endsnippet
 
 snippet body "body from request"
-const ${1:body} = [];
+const ${1:body} = []
 res.on('data', (chunk) => {
-  $1.push(chunk.toString());
+  $1.push(chunk.toString())
 }).on('end', () => {
-  const html = $1.join();
+  const html = $1.join()
   ${2:statment}
-});
+})
 endsnippet
 
 # conditions
-snippet if
-if ($1) {
+
+snippet iff "if statement" wA
+if (${1:true}) {
   ${2:${VISUAL:statemant}}
 }
-endsnippet 
+endsnippet
 
-snippet else 
+snippet ifn "if statement" wA
+if (!${1:false}) {
+  ${2:${VISUAL:statemant}}
+}
+endsnippet
+
+snippet else "else" wA
 else {
   $1
 }
@@ -83,7 +154,7 @@ snippet ter
 ${1:condition} ? ${2:true} : ${3:false}
 endsnippet
 
-snippet switch 
+snippet switch
 switch (${1:state}) {
   case $2:
     $3
@@ -93,61 +164,92 @@ endsnippet
 snippet edf "export default function"
 export default (${1:args}) => {
   ${2:statemant}
-};
+}
 endsnippet
 
-snippet fn
+snippet 'fn' "function" rbA
 const ${1:name} = (${2:args}) => {
   ${3:statemant}
-};
+}
 endsnippet
 
 snippet f
 ($2) => {
   $3
-};
+}
 endsnippet
 
-snippet sf
+snippet '(sf)' "simple function" r
 ${1:arg} => ${2:$1}
 endsnippet
 
-snippet iter 
+snippet iter
 const ${1:iter} = (${2:item}, ${3:acc}) => {
   if ($6) {
-    return ${7:$3};
+    return ${7:$3}
   }
-  return iter(${4:$2}, ${5:$3});
-};
+  return iter(${4:$2}, ${5:$3})
+}
 endsnippet
 
 snippet head
-const [${1:head}, ...${2:rest}] = ${0:arr};
+const [${1:head}, ...${2:rest}] = ${0:arr}
 endsnippet
 
 # OPP
 
 snippet class
-export default class ${1:Name} {
+export default class ${1:`!p snip.rv = snip.basename`} {
   $2
-
 }
 endsnippet
 
-snippet m 
-${1:nameOfMethod}($2) {
+snippet cle
+export default class ${1:`!p snip.rv = snip.basename`} extends ${2:Class} {
+  $3
+}
+endsnippet
+
+# snippet constr
+# constructor($1) {
+#   `!p
+#   args = match.group(1)
+#   `
+# }$0
+# endsnippet
+
+
+snippet constr
+constructor(${1:arg}) {
+  this.$1 = $1
+}
+endsnippet
+
+# snippet 'co(n|s)(s|n)tr\((.*)\)' "class constructor" r
+# `!p
+# attrs = match.group(3).strip().split(",")
+# newAttrs = []
+# for i in attrs:
+#   newAttrs.append('this.' + i.strip() + ' = ' + i.strip())
+# snip.rv = 'constructor(' + ','.join(attrs) + ')' + ' {' + '\n  ' + '\n  '.join(newAttrs) + '\n' + '}'
+# `
+# endsnippet
+
+snippet m
+${1:method}($2) {
   $3
 }
 endsnippet
 
 snippet lodash
-import _ from 'lodash';
+import _ from 'lodash'
 $0
 endsnippet
 
 # nock
+
 snippet ndis "nock.disableNetConnect"
-nock.disableNetConnect();
+nock.disableNetConnect()
 endsnippet
 
 # generators
@@ -155,18 +257,18 @@ endsnippet
 snippet gen "generators"
 const ${1:generator} = function* () {
   ${2:yield}
-};
+}
 endsnippet
 
 snippet of "for..of"
 for (const ${1:v} of ${2:generator}) {
-  ${3:function}($1);
+  ${3:function}($1)
 }
 endsnippet
 
 # ERROR
 
-snippet tc "try/catch"
+snippet try "try/catch"
 try {
   ${1:statment}
 } catch (${2:err}) {
@@ -174,45 +276,32 @@ try {
 }
 endsnippet
 
-
-# Express 
-snippet get "app.get(...)"
-app.get('${1:/}', (req, res) => {
-  ${2:res}
-});
-endsnippet
-
-snippet post "app.post(...)"
-app.post('${1:/}', (req, res) => {
-  ${2:res}
-});
-endsnippet
-
 # Jest
+
 snippet ds "describe it"
 describe('${1:describ}', () => {
   it('${2:test describ}', () => {
     ${3:statment}
-  });
-});
+  })
+})
 endsnippet
 
 snippet it "test branch"
 it('${1:test describ}', () => {
   ${2:statment}
-});
+})
 endsnippet
 
 snippet tobe "expect toBe"
-expect(${1:expect}).toBe(${2:value});
+expect(${1:expect}).toBe(${2:value})
 endsnippet
 
 snippet toundef "expect toBe.Undefined"
-expect(${1:expect}).toBe.Undefined(${2:value});
+expect(${1:expect}).toBe.Undefined(${2:value})
 endsnippet
 
 snippet tocontain "expect toContain"
-expect(${1:expect}).toContain(${2:value});
+expect(${1:expect}).toContain(${2:value})
 endsnippet
 
 # HTTP
@@ -220,7 +309,7 @@ endsnippet
 snippet hget "http get"
 http.get('http://${1:host}', res => {
   ${2:res}
-});
+})
 endsnippet
 
 #Vue
@@ -237,22 +326,28 @@ new Vue({
     $2
   },
 
-});
+})
 endsnippet
 
-snippet st "setTimeout function"
+snippet timeout "setTimeout function"
 setTimeout(() => {
   ${2:statment}
-}, ${1:delay});
+}, ${1:delay})
 endsnippet
 
-snippet rf "readFile"
+snippet interval "interval function"
+setInterval(() => {
+  ${2:statment}
+}, ${1:delay})
+endsnippet
+
+snippet file "readFile"
 fs.readFile(${1:path/to/file}, 'utf8', (err, ${2:data}) => {
   if (err) {
-    console.log(err);
+    console.log(err)
   }
-  ${3:console.log($2)};
-});
+  ${3:console.log($2)}
+})
 endsnippet
 
 global !p
@@ -264,10 +359,9 @@ def complete(t, opts):
     return '(' + '|'.join(opts) + ')'
 endglobal
 
-
-snippet vs "state"  
+snippet vs "state"
 $1`!p
-snip.rv= complete(t[1], ['state', 'getters', 'mutations', 'actions',])
+snip.rv = complete(t[1], ['state', 'getters', 'mutations', 'actions',])
 `: {
   ${2:components}
 },
@@ -283,4 +377,145 @@ snippet gm "methods in getters"
 ${1:nameOfGetters}: state => {
   ${2:statement}
 },
+endsnippet
+
+#EXPRESS
+snippet xtoken "heders csrf token" A
+'X-XSRF-TOKEN': csrf
+endsnippet
+
+snippet fe "express middleware"
+const ${1:nameMiddleware} = (req, res, next) => {
+  ${3:statment}
+}
+endsnippet
+
+snippet redirect
+res.redirect('${1:back}')
+endsnippet
+
+snippet flash
+req.flash('${1:error}', '${2:message}')
+endsnippet
+
+#DOM
+
+snippet '\.foreach' "forEach" rA
+.forEach(${1:el} => {
+  $2
+})
+endsnippet
+
+snippet '\.map' "map" rA
+.map(${1:item} => {
+  $2
+})
+endsnippet
+
+snippet '(?<=\.)filter' "filter" rA
+filter(${1:item} => {
+  $2
+})
+endsnippet
+
+snippet '\.find' "find" rA
+.find(${1:item} => {
+  $2
+})
+endsnippet
+
+snippet 'byid' "getElementById" rA
+const ${1:element} = ${2:document}.getElementById('${3:id}')
+$0
+endsnippet
+
+snippet 'allselect' "querySelectorAll" rA
+const ${1:elements} = ${2:document}.querySelectorAll('${3:slectors}')
+$0
+endsnippet
+
+snippet 'select' "querySelector" r
+const ${1:element} = ${2:document}.querySelector('${3:selector}')
+$0
+endsnippet
+
+snippet 'element' "createElement" r
+const ${1:element} = document.createElement('${2:$1}')
+$0
+endsnippet
+
+snippet '\.event' "addEventListener" rA
+.addEventListener('${1:click}', ($2) => {
+  $3
+})
+endsnippet
+
+snippet 'prevent' "preventDefault" wrA
+${1:e}.preventDefault()
+endsnippet
+
+snippet divs
+const divs = document.getElementsByTagName('div')
+endsnippet
+
+snippet 'inner' "innerHTML" rA
+innerHTML
+endsnippet
+
+snippet 'outer' "outerHTML" rA
+outerHTML
+endsnippet
+
+snippet 'adj' "insertAdjacentHTML" rA
+insertAdjacentHTML('${1:beforeend}', ${2:html})
+endsnippet
+
+snippet 'text' "textContent" r
+textContent
+endsnippet
+
+snippet '\.prepend' "prepend" rA
+.prepend($1)$0
+endsnippet
+
+snippet '\.append' "append" rA
+.append($1)$0
+endsnippet
+
+snippet '\.replace' "replaceWith" rA
+.replaceWith($1)$0
+endsnippet
+
+snippet 'setattr' "setAttribute" rA
+${1:element}.setAttribute('${2:type}', '${3:text}')
+$0
+endsnippet
+
+snippet 'getattr' "getAttribute" rA
+${1:element}.getAttribute('${2:name}')
+$0
+endsnippet
+
+snippet time
+console.time('${1:timer}')
+`!p
+snip.rv = snip.v.text
+`console.timeEnd('${2:$1}')
+endsnippet
+
+snippet lsset "localStorage.setItem" A
+localStorage.setItem('${1:key}', ${2:value})$0
+endsnippet
+
+snippet lsget "localStorage.getItem" A
+localStorage.getItem('${1:key}')$0
+endsnippet
+
+snippet lsclear "localStorage.clear" A
+localStorage.clear()$0
+endsnippet
+
+
+snippet lsremove "localStorage.clear" A
+localStorage.removeItem('${1:key}')$0
 endsnippet

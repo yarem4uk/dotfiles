@@ -1,3 +1,53 @@
+snippet comment "comments" wA
+
+<!------ start comments ${1:`!p
+import re
+regex = r'(?<=class=\").*?(?=\")'
+matches = re.search(regex, snip.v.text)
+if matches:
+  m = matches.group().strip().split(' ')
+  t = m[0]
+else:
+  t = ''
+snip.rv = t
+`} ---------------->
+ ${2:`!p
+snip.rv = snip.v.text
+ `}
+<!------ end of comments $1 --------------->
+$0
+endsnippet
+
 snippet holder
 "http://via.placeholder.com/$1x$2"
+endsnippet
+
+snippet '(eq)' "equal" r
+<%= $1 %>
+endsnippet
+
+snippet '(for)' "for" r
+<% for (let ${1:item} of ${2:items}) { %>
+endsnippet
+
+snippet '(if)' "if" r
+<% if ($1) { %>
+endsnippet
+
+snippet '(else)' "else" r
+<% } else { %>
+endsnippet
+
+snippet '(end)' "end" r
+<% } %>
+endsnippet
+
+snippet include
+<%- include('$1includes/$2.ejs'$3) %>$0
+endsnippet
+
+snippet '(foreach)' "foreach" r
+<% $1.forEach(${3:item} => { %>
+  $3
+<% }) %>
 endsnippet

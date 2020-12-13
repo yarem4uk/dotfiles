@@ -1,69 +1,77 @@
-source ~/dotfiles/vim/abbreviations.vim
+ source ~/dotfiles/vim/abbreviations.vim
 
 set nocompatible
 filetype off
+syntax enable
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'christoomey/vim-system-copy'
-Plugin 'vim-scripts/ReplaceWithRegister'
+Plug 'tpope/vim-sensible'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'foosoft/vim-argwrap'
+Plug 'SirVer/ultisnips'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
-Plugin 'tpope/vim-sensible'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'foosoft/vim-argwrap'
-Plugin 'SirVer/ultisnips'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'mileszs/ack.vim'
+"themes
+Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
-" Git
-Plugin 'tpope/vim-fugitive'
-
-" linter
-Plugin 'w0rp/ale'
+" Linter
+Plug 'w0rp/ale'
 
 " html
-Plugin 'othree/html5.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
 
 " js
-Plugin 'pangloss/vim-javascript'
-Plugin 'moll/vim-node'
-Plugin 'briancollins/vim-jst'
-Plugin 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'moll/vim-node'
+Plug 'briancollins/vim-jst'
+Plug 'elzr/vim-json'
 
 " pug
-Plugin 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug'
 
-" php 
-Plugin '2072/PHP-Indenting-for-VIm'
-
-"perl
-" Plugin 'vim-perl/vim-perl'
-
-" python 
-" Plugin 'klen/python-mode'
+" php
+Plug '2072/PHP-Indenting-for-VIm'
 
 " blade.php
-Plugin 'jwalton512/vim-blade'
+Plug 'jwalton512/vim-blade'
 
 " yaml
-Plugin 'stephpy/vim-yaml'
+Plug 'stephpy/vim-yaml'
+
 " vue
-Plugin 'posva/vim-vue'
-Plugin 'leafOfTree/vim-vue-plugin'
-call vundle#end()
+Plug 'posva/vim-vue'
+Plug 'leafOfTree/vim-vue-plugin'
+
+Plug 'jpalardy/vim-slime'
+call plug#end()
+
+" let g:nord_cursor_line_number_background = 1
+" let g:nord_italic_comments = 1
+" let g:nord_uniform_diff_background = 1
+" colorscheme nord
+
+let g:gruvbox_contrast_dark = "soft"
+let g:gruvbox_sign_column = "bg0"
+colorscheme gruvbox
 
 filetype plugin indent on
 
@@ -72,8 +80,6 @@ set lazyredraw
 
 set number
 set ruler
-" syntax enable
-syntax on
 set wrap
 set linebreak
 set cursorline
@@ -89,11 +95,12 @@ set autoindent
 set smartindent
 
 set t_Co=256
+set nohls
 set ignorecase
 set smartcase
 set laststatus=2
 
-set undodir=~/.vim/backups
+set undodir=~/.config/nvim/backups
 set undofile
 
 set foldmethod=indent
@@ -101,46 +108,42 @@ set foldlevelstart=99
 
 let mapleader="\<Space>"
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
+let g:slime_dont_ask_default = 1
+nmap <silent> <leader>r :%SlimeSend<cr>
 
 " ALE linter
 let g:ale_php_phpcs_standard = 'PSR2'
+
 let g:ale_linters = {
       \   'markdown': [],
       \   'javascript': ['eslint'],
+      \   'python': ['flake8'],
+      \   'html': ['prettier'],
       \}
 
-" let g:ale_fixers = {
-"       \ 'python': ['black'],
-"       \}
+let g:ale_fixers = {
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'javascript': ['prettier'],
+      \}
 
-" let g:ale_fix_on_save = 1
-" let g:airline#extensions#ale#enabled = 1
+" \ 'python': ['black'],
+
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 0
-let g:ale_sign_error = '•'
-let g:ale_sign_warning = '.'
-highlight link ALEWarningSign todo
-highlight link ALEErrorSign night
-" highlight clear ALEWarningSign
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = 'ί'
 let g:ale_set_highlights = 0
-" let g:ale_sign_column_always = 1
 
 nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
 
-
-" LIGHGLINE
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ }
-
 " ULTISNIPS
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger='<Tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
@@ -149,8 +152,7 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 " NERDTREE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let NERDTreeIgnore = ['\.pyc$', 'node_modules$']
-" let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules$', '__pycache__']
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -169,6 +171,9 @@ let g:bufExplorerShowRelativePath=1
 " let g:user_emmet_leader_key=','
 
 " FZF
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
+let g:fzf_preview_window = []
+
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>; :Buffers<cr>
 " inoremap <expr> <C-j> fzf#vim#complete('cat $HOME/.config/css.cfg')
@@ -177,12 +182,13 @@ nnoremap <leader>; :Buffers<cr>
 let g:ackprg = 'rg --vimgrep --no-heading'
 
 " PYTHON
-let python_highlight_all=1
+let g:python3_host_prog = '/usr/bin/python'
+
 
 " COMMAND MAPPINGS
 noremap Y y$
 
-noremap <leader><leader> <C-^> 
+noremap <leader><leader> <C-^>
 
 " Map ctrl-movement keys to window switching
 noremap <C-k> <C-w><Up>
@@ -190,11 +196,12 @@ noremap <C-j> <C-w><Down>
 noremap <C-l> <C-w><Right>
 noremap <C-h> <C-w><Left>
 
-" Allows you to tintersudo pass and save the file 
-" when you forgot to open your file with sudo 
+" Allows you to tintersudo pass and save the file
+" when you forgot to open your file with sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
 cnoreabbrev ss %s/
+
 cnoremap <UP>    <NOP>
 cnoremap <Down>  <NOP>
 cnoremap <Left>  <NOP>
@@ -228,19 +235,27 @@ noremap gj j
 nnoremap ' `
 nnoremap ` '
 
+" LIGHGLINE
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+" let g:lightline = {
+"       \ 'colorscheme': 'seoul256',
+"       \ }
+
 " Quickly select the text I just pasted.
 noremap gV `[v`]
-
-" Toggle paste modle
-noremap <silent> <F4> :set invpaste<CR>:set paste?<CR> 
-inoremap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 " Make Ctrl-e jump to the end of the line in the insert mode.
 inoremap <C-e> <C-o>$
 inoremap <C-f> <C-x><C-f>
+inoremap <A-j> (
+inoremap <A-k> )
+
 
 " MOVEMENT
 onoremap <silent>in :<C-u>normal! f(vi(<cr>
+onoremap <silent>il :<C-u>normal! F)vi(<cr>
+onoremap im i[
 
 " LEADER MAPING
 
@@ -269,12 +284,13 @@ nnoremap <leader>( :normal! a(<esc>f;i)<esc>
 nnoremap <leader>e <C-z>
 
 " au BufNewFile,BufRead *.blade.php setl ft=html
+au BufNewFile,BufRead *.ejs set ft=html
 
 au BufNewFile,BufRead *.ms set filetype=groff
 au BufNewFile,BufRead *.ejs set filetype=html
 au bufread,bufnewfile *.py setl sts=4 sw=4 tw=79
-au bufread,bufnewfile *.html setl sts=2 sw=4 tw=79
-au BufRead,BufNewFile *.phtml setl ft=php 
+au bufread,bufnewfile *.html setl sts=2 sw=2 tw=79
+au BufRead,BufNewFile *.phtml setl ft=php
 au BufRead,BufNewFile *.phtml nnoremap <leader>h :call SetHTML()<cr>
 " au BufRead,BufNewFile *.vue nnoremap <leader>h :call SetCss()<cr>
 
@@ -308,4 +324,4 @@ au BufNewFile *.pl 0r ~/.vim/templates/skeleton.pl
 " endfunc
 "
 "symbols
-"✗✘✓
+"✘✓
