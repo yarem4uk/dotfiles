@@ -5,7 +5,11 @@ root:
 vim:
 	./vim_setup
 
-all: nvim-install ubuntu-prepare
+all: bash-setup nvim-install ubuntu-prepare
+
+bash-setup:
+	ln -s $(PWD)/files/bashrc ~/.bashrc | true
+	ln -s $(PWD)/files/aliases ~/.aliases | true
 
 nvim-install:
 	mkdir -p ~/.config/nvim
