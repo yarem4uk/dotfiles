@@ -1,4 +1,4 @@
- source ~/dotfiles/vim/abbreviations.vim
+ source ~/.config/nvim/abbreviations.vim
 
 set nocompatible
 filetype off
